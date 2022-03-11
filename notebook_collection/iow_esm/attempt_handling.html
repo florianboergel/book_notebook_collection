@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Set up the IOW ESM framework &#8212; IOW Notebook COllection</title>
+    <title>Attempt handling &#8212; IOW Notebook Collection</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -74,9 +74,14 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
       
       
-      <h1 class="site-logo" id="site-title">IOW Notebook COllection</h1>
+      <img src="../../_static/iow.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IOW Notebook Collection</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -179,7 +184,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   1. Set up the IOW ESM framework
+   Attempt handling
   </a>
  </li>
  <li class="toctree-l1">
@@ -420,27 +425,27 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-the-iow-esm-framework">
    1. Set up the IOW ESM framework
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-your-own-attempt-handler">
    2. Create your own attempt handler
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#register-your-attempt-handler">
    3. Register your attempt handler
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-the-iow-esm-calls-the-attempt-handler">
    4. How the IOW ESM calls the attempt handler
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-default-case">
      The default case
     </a>
@@ -457,7 +462,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>1. Set up the IOW ESM framework</h1>
+                <h1>Attempt handling</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -467,27 +472,27 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-the-iow-esm-framework">
    1. Set up the IOW ESM framework
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-your-own-attempt-handler">
    2. Create your own attempt handler
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#register-your-attempt-handler">
    3. Register your attempt handler
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-the-iow-esm-calls-the-attempt-handler">
    4. How the IOW ESM calls the attempt handler
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-default-case">
      The default case
     </a>
@@ -503,13 +508,15 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="set-up-the-iow-esm-framework">
-<h1>1. Set up the IOW ESM framework<a class="headerlink" href="#set-up-the-iow-esm-framework" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="attempt-handling">
+<h1>Attempt handling<a class="headerlink" href="#attempt-handling" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="set-up-the-iow-esm-framework">
+<h2>1. Set up the IOW ESM framework<a class="headerlink" href="#set-up-the-iow-esm-framework" title="Permalink to this headline">¶</a></h2>
 <p>Follow the steps described in the Readme you can find at the project’s <a class="reference external" href="https://git.io-warnemuende.de/iow_esm/main">main site</a>.</p>
 <p>After you have set up everything go to the target machine.</p>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="create-your-own-attempt-handler">
-<h1>2. Create your own attempt handler<a class="headerlink" href="#create-your-own-attempt-handler" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-your-own-attempt-handler">
+<h2>2. Create your own attempt handler<a class="headerlink" href="#create-your-own-attempt-handler" title="Permalink to this headline">¶</a></h2>
 <p>Once you are on the target you have to create a python module, let’s call it <code class="docutils literal notranslate"><span class="pre">my_attempt_handling.py</span></code>.
 You can create it anywhere you like but let’s assume for this example that you create it in the path to the root directory of the IOW ESM, say <code class="docutils literal notranslate"><span class="pre">&quot;/path/to/IOW_ESM&quot;</span></code>.</p>
 <p>This module has to contain a class with some mandatory members and methods as illustrated in the following example:</p>
@@ -568,8 +575,8 @@ The example class does nothing to prepare the first attempt but creates an empty
 It is further constructed such that the first attempt will always fail and the second succeeds only if the empty file has been created, <code class="docutils literal notranslate"><span class="pre">evaluate_attempt</span></code> method.</p>
 <p>Of course for your application you have to implement your own functionality according to your needs.</p>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="register-your-attempt-handler">
-<h1>3. Register your attempt handler<a class="headerlink" href="#register-your-attempt-handler" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="register-your-attempt-handler">
+<h2>3. Register your attempt handler<a class="headerlink" href="#register-your-attempt-handler" title="Permalink to this headline">¶</a></h2>
 <p>In order to register your attempt handler you have to pass an instance via the <code class="docutils literal notranslate"><span class="pre">global_settings.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">input</span></code> folder within your <code class="docutils literal notranslate"><span class="pre">&quot;/path/to/IOW_ESM&quot;</span></code>.
 For the example given above you would have to add the following lines to the <code class="docutils literal notranslate"><span class="pre">global_settings.py</span></code> file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#################################################</span>
@@ -588,8 +595,8 @@ For the example given above you would have to add the following lines to the <co
 </div>
 <p>Again the name <code class="docutils literal notranslate"><span class="pre">my_attempt_handling</span></code>, <code class="docutils literal notranslate"><span class="pre">MyAttemptHandler</span></code> as well as the path <code class="docutils literal notranslate"><span class="pre">&quot;/path/to/IOW_ESM&quot;</span></code> might be different for you.</p>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="how-the-iow-esm-calls-the-attempt-handler">
-<h1>4. How the IOW ESM calls the attempt handler<a class="headerlink" href="#how-the-iow-esm-calls-the-attempt-handler" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-the-iow-esm-calls-the-attempt-handler">
+<h2>4. How the IOW ESM calls the attempt handler<a class="headerlink" href="#how-the-iow-esm-calls-the-attempt-handler" title="Permalink to this headline">¶</a></h2>
 <p>The IOW ESM will call the attempt handler such that it iterates over the entries in <code class="docutils literal notranslate"><span class="pre">attempt_handler.attempts</span></code> until the model does not crash and <code class="docutils literal notranslate"><span class="pre">evaluate_attempt</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, or the last attempt is exhausted.</p>
 <p>The corresponding code from <code class="docutils literal notranslate"><span class="pre">scripts/run/run.py</span></code> looks like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">runs_per_job</span><span class="p">):</span>
@@ -633,9 +640,10 @@ For the example given above you would have to add the following lines to the <co
 <p>In other words you best prepare your attempt in the <code class="docutils literal notranslate"><span class="pre">input</span></code> directory and evaluate it in the global <code class="docutils literal notranslate"><span class="pre">work</span></code> directory.</p>
 <p>Note that preparation and evaluation are intended to be rather small and fast tasks since these steps consume walltime of your job.</p>
 <div class="section" id="the-default-case">
-<h2>The default case<a class="headerlink" href="#the-default-case" title="Permalink to this headline">¶</a></h2>
+<h3>The default case<a class="headerlink" href="#the-default-case" title="Permalink to this headline">¶</a></h3>
 <p>The default for the variable <code class="docutils literal notranslate"><span class="pre">attempt_handler</span></code> would be <code class="docutils literal notranslate"><span class="pre">None</span></code> or it can be left out.
 In both cases there will be a single attempt for each run without preparation and always positive evaluation (however a run can of cource  still fail if the model crashes)</p>
+</div>
 </div>
 </div>
 
