@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downloading MOM code and compiling &#8212; IOW Notebook COllection</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="index.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="../mom5_postprocess/prepare_for_validator/postprocess_validator_mom.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">IOW Notebook COllection</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  notebook_collection.ipynb
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebook_collection.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  accessing_data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../accessing_data/accessing_data.html">
+   Accessing data from remote or local sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../accessing_data/sealevel_emodnet/index.html">
+   Accessing EMODNET sea level data from tide gauges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  converting_files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converting_files/converting_files.html">
+   Converting files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converting_files/shapefile_ascii_polygons/shapefile_ascii_polygons.html">
+   Converting shapefiles (.shp) to ASCII (coordinates of polygons)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converting_files/shapefile_nc_raster/shapefile_nc_raster.html">
+   Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  getm_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getm_prepare/index.html">
+   GETM preprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  git_tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../git_tutorial/Untitled.html">
+   Git - How-to
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../git_tutorial/git_start_v2.html">
+   Git - How-to
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  iow_esm
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../iow_esm/attempt_handling.html">
+   1. Set up the IOW ESM framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../iow_esm/automatic_postprocessing.html">
+   Default processing of raw output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../iow_esm/create_postprocess_task.html">
+   Create a new postprocess task
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  jupyter_notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter_notebooks/jupyter_notebooks.html">
+   What is an .ipynb File?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_postprocess
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mom5_postprocess/index.html">
+   MOM5 output postprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_prepare
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_gaugedata
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_gaugedata/obsdata_gaugedata.html">
+   Processing tide gauge observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_gaugedata/convert_emodnet_validator/convert_emodnet_validator.html">
+   Convert EmodNet tide gauge data to validator format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_gaugedata/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_hydrography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_hydrography/obsdata_hydrography.html">
+   Processing hydrographic observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_hydrography/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  plots_and_maps
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/plots.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/plots_and_maps.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/basic_plotting/basic_plotting.html">
+   Basic plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/map_with_countries/map_with_countries.html">
+   Map with country borders
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  stat_timeseries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat_timeseries/stat_timeseries.html">
+   Time series analyses
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat_timeseries/regression_maps/regression.html">
+   AMO example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.html">
+   Removing seasonal observation bias from an irregular time series
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebook_collection/mom5_prepare/00_download_code_and_compile.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/florianboergel/book_notebook_collection"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/florianboergel/book_notebook_collection/issues/new?title=Issue%20on%20page%20%2Fnotebook_collection/mom5_prepare/00_download_code_and_compile.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/book_notebook_collection/master?urlpath=tree/notebook_collection/mom5_prepare/00_download_code_and_compile.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-proceed">
+   How to proceed:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Downloading MOM code and compiling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-proceed">
+   How to proceed:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="downloading-mom-code-and-compiling">
+<h1>Downloading MOM code and compiling<a class="headerlink" href="#downloading-mom-code-and-compiling" title="Permalink to this headline">¶</a></h1>
+<p><font color='red'><strong>Note:</strong></font> Feel free to change and improve the notebook. However,when you only want to use the notebook, it is recommended that you create a copy of this notebook.</p>
+<p>For that click <code class="docutils literal notranslate"><span class="pre">File</span></code> in the top left corner and select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">notebook</span> <span class="pre">as</span></code> and enter your savepath.</p>
+<p>The MOM 5.1 code is available at our IOW gitlab server. If you don’t have an account yet, contact Knut Klingbeil (<a class="reference external" href="mailto:knut&#46;klingbeil&#37;&#52;&#48;io-warnemuende&#46;de">knut<span>&#46;</span>klingbeil<span>&#64;</span>io-warnemuende<span>&#46;</span>de</a>) and ask him to create one.</p>
+</div>
+<div class="section" id="how-to-proceed">
+<h1>How to proceed:<a class="headerlink" href="#how-to-proceed" title="Permalink to this headline">¶</a></h1>
+<p>Simply go through every cell step-by-step. If you need help please contact</p>
+<p><a class="reference external" href="mailto:florian&#46;boergel&#37;&#52;&#48;io-warnemuende&#46;de">florian<span>&#46;</span>boergel<span>&#64;</span>io-warnemuende<span>&#46;</span>de</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the the path to the directory, where the MOM code should be downloaded.</p>
+<p>If the path does not exist yet, the script will create the folder (<em>if you have write access</em>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WORKDIR</span> <span class="o">=</span> <span class="s2">&quot;/silor/boergel/tmp2&quot;</span> <span class="c1"># INPUT NEEDED; put name in quotation marks &quot;&quot;</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">WORKDIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="p">{</span><span class="n">WORKDIR</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next you need to decide on which server you want to compile the code.</p>
+<p>Available options are (feel free to add more):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">phy-1</span></code></p></li>
+</ul>
+<p><strong>TODO</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">phy-3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phy-4</span></code></p></li>
+</ul>
+<p><strong>Note</strong>: phy-1 and phy-2 are the same operating system as well as phy-3 and phy-4 are identical. Hence compilation on phy-1 should also allow to run the model on phy-2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compile_on</span> <span class="o">=</span> <span class="s2">&quot;phy-1&quot;</span> <span class="c1"># INPUT NEEDED; put name in quotation marks &quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, the code will be downloaded, therefore you need to enter your <a class="reference external" href="http://gitlab.io-warnemuende.de">gitlab.io-warnemuende.de</a> username.</p>
+<p>You will find your username under <a class="reference external" href="https://gitlab.io-warnemuende.de/-/profile/account">https://gitlab.io-warnemuende.de/-/profile/account</a></p>
+<p><strong>Note</strong>: Enter <strong>without</strong> &#64;io-warnemuende.de</p>
+<p>for example: florian.boergel</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;florian.boergel&quot;</span> <span class="c1"># INPUT NEEDED put name in quotation marks &quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enter password&quot;</span><span class="p">)</span>
+<span class="o">!</span>git clone https://<span class="o">{</span>username<span class="o">}</span>:<span class="o">{</span>getpass.getpass<span class="o">()}</span>@gitlab.io-warnemuende.de/thomas.neumann/iow-mom.git
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span> -s &quot;$compile_on&quot; &quot;$WORKDIR&quot;
+
+if [ $1 = phy-1 ]
+then
+cat &gt; $2/iow-mom/compile.sh &lt;&lt;EOF
+#!/bin/bash
+
+# This first script loads all necessary modules for the compilation
+
+cd $2/iow-mom
+module load intel/2017.1.132
+module load openmpi-intel/2.0.1-ifort-2017.1.132
+module load netcdf/4.4.1.1-intel_2017.1.132
+module load hdf5/1.8.18-intel_2017.1.132
+
+# If ERGOM exist, will be copied
+cp ERGOM/generic_ERGOM.F90 src/ocean_shared/generic_tracers/generic_ERGOM.F90
+
+cd  exp/
+./MOM_compile.csh
+cd ../..
+EOF
+
+
+cat &gt; $2/iow-mom/bin/mkmf.template.ifc &lt;&lt;EOF
+# This scripts links all necessary libraries
+
+# template for the Intel fortran compiler version 8
+# typical use with mkmf
+# mkmf -t template.ifc -c&quot;-Duse_libMPI -Duse_netCDF&quot; path_names /usr/local/include
+# -traceback
+
+
+INCL := \$(shell pkg-config --cflags-only-I netcdf-fortran)
+LIBS := \$(shell pkg-config --libs netcdf)
+LIBS += \$(shell pkg-config --libs netcdf-fortran)
+LFLAGS := -Wl,-rpath,\$(shell pkg-config --variable=libdir netcdf)
+FFLAGS := -O2 -traceback -ip -xHost -align all -IPF-fp-relaxed -assume byterecl -r8 -fp-model precise -align  \${INCL} 
+CPPFLAGS := \${INCL}
+FC = mpifort
+LD = mpifort
+LDFLAGS :=  \${LIBS} \${LFLAGS}
+CC = mpicc
+EOF
+fi
+
+chmod u+x $2/iow-mom/compile.sh
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hostname</span> <span class="o">=</span> <span class="o">!</span><span class="nb">echo</span> <span class="nv">$HOSTNAME</span> <span class="p">|</span> tr <span class="s1">&#39;[:upper:]&#39;</span> <span class="s1">&#39;[:lower:]&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">hostname</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">compile_on</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your hostname does not match the server you want to compile MOM for.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have now 2 options: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(1) try the code cell below, which will work when you can connect to the servert via ssh (requires no passphrase)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(2) connect to </span><span class="si">{}</span><span class="s2"> and execute </span><span class="si">{}</span><span class="s2">/iow-mom/./compile.sh from there.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">compile_on</span><span class="p">,</span> <span class="n">WORKDIR</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span> -s &quot;$compile_on&quot; &quot;$WORKDIR&quot;
+
+ssh $1 $2/iow-mom/./compile.sh
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After finishing the compilation you should find the executable under: </span><span class="si">{}</span><span class="s2">/iow-mom/exec/ifc/MOM_SIS.&quot;</span><span class="nb">format</span><span class="p">(</span><span class="n">WORKDIR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "iow_python",
+            path: "./notebook_collection/mom5_prepare"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'iow_python'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../mom5_postprocess/prepare_for_validator/postprocess_validator_mom.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">&lt;no title&gt;</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Hagen Radtke and Florian Boergel<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,756 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc) &#8212; IOW Notebook COllection</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="GETM preprocessing" href="../../getm_prepare/index.html" />
+    <link rel="prev" title="Converting shapefiles (.shp) to ASCII (coordinates of polygons)" href="../shapefile_ascii_polygons/shapefile_ascii_polygons.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">IOW Notebook COllection</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  notebook_collection.ipynb
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebook_collection.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  accessing_data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/accessing_data.html">
+   Accessing data from remote or local sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/sealevel_emodnet/index.html">
+   Accessing EMODNET sea level data from tide gauges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  converting_files
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converting_files.html">
+   Converting files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../shapefile_ascii_polygons/shapefile_ascii_polygons.html">
+   Converting shapefiles (.shp) to ASCII (coordinates of polygons)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  getm_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../getm_prepare/index.html">
+   GETM preprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  git_tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/Untitled.html">
+   Git - How-to
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/git_start_v2.html">
+   Git - How-to
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  iow_esm
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/attempt_handling.html">
+   1. Set up the IOW ESM framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/automatic_postprocessing.html">
+   Default processing of raw output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/create_postprocess_task.html">
+   Create a new postprocess task
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  jupyter_notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../jupyter_notebooks/jupyter_notebooks.html">
+   What is an .ipynb File?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_postprocess
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_postprocess/index.html">
+   MOM5 output postprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_prepare/00_download_code_and_compile.html">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_gaugedata
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/obsdata_gaugedata.html">
+   Processing tide gauge observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/convert_emodnet_validator/convert_emodnet_validator.html">
+   Convert EmodNet tide gauge data to validator format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_hydrography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/obsdata_hydrography.html">
+   Processing hydrographic observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  plots_and_maps
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/plots.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/plots_and_maps.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/basic_plotting/basic_plotting.html">
+   Basic plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/map_with_countries/map_with_countries.html">
+   Map with country borders
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  stat_timeseries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/stat_timeseries.html">
+   Time series analyses
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/regression_maps/regression.html">
+   AMO example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.html">
+   Removing seasonal observation bias from an irregular time series
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/notebook_collection/converting_files/shapefile_nc_raster/shapefile_nc_raster.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/florianboergel/book_notebook_collection"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/florianboergel/book_notebook_collection/issues/new?title=Issue%20on%20page%20%2Fnotebook_collection/converting_files/shapefile_nc_raster/shapefile_nc_raster.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/book_notebook_collection/master?urlpath=tree/notebook_collection/converting_files/shapefile_nc_raster/shapefile_nc_raster.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-in-the-shapefile">
+   Read in the shapefile
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-in-the-shapefile">
+   Read in the shapefile
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="converting-shapefiles-shp-to-gridded-rastered-netcdf-nc">
+<h1>Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)<a class="headerlink" href="#converting-shapefiles-shp-to-gridded-rastered-netcdf-nc" title="Permalink to this headline">¶</a></h1>
+<p><em>by Hagen Radtke, 2020-06-25</em></p>
+<div class="section" id="read-in-the-shapefile">
+<h2>Read in the shapefile<a class="headerlink" href="#read-in-the-shapefile" title="Permalink to this headline">¶</a></h2>
+<p>The shapefile is saved in the subfolder <code class="docutils literal notranslate"><span class="pre">my_folder</span></code>. It consists of several files with different file extensions.
+We will read it using the R library <code class="docutils literal notranslate"><span class="pre">rgdal</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/silos/notebook_collection/converting_files/shapefile_nc_raster/&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;rgdal&quot;</span><span class="p">)</span>
+<span class="n">shape</span> <span class="o">=</span> <span class="n">rgdal</span><span class="o">::</span><span class="nf">readOGR</span><span class="p">(</span><span class="s">&quot;my_folder&quot;</span><span class="p">,</span><span class="s">&quot;IPCC_regions_Aug2013&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: sp
+rgdal: version: 1.5-10, (SVN revision 1006)
+Geospatial Data Abstraction Library extensions to R successfully loaded
+Loaded GDAL runtime: GDAL 2.3.3, released 2018/12/14
+Path to GDAL shared files: /silos/conda_packages/radtke/miniconda3_4.8.2/OS_42.3/conda_env/iow_python/share/gdal
+GDAL binary built with GEOS: TRUE 
+Loaded PROJ runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
+Path to PROJ shared files: /sw/data/python/miniconda3/4.8.2/OS_42.3/envs/iow_r_basic/share/proj
+Linking to sp version:1.3-1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OGR data source with driver: ESRI Shapefile 
+Source: &quot;/silos/notebook_collection/converting_files/shapefile_nc_raster/my_folder&quot;, layer: &quot;IPCC_regions_Aug2013&quot;
+with 18 features
+It has 2 fields
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check if the shape is already on a latitude-longitude grid:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">shape</span><span class="o">@</span><span class="n">proj4string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRS arguments: +proj=longlat +ellps=clrk66 +no_defs 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay, projection is already “longlat”. If this is not the case, we have to reproject it like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">projection</span> <span class="pre">&lt;-</span> <span class="pre">&quot;+proj=longlat</span> <span class="pre">+datum=WGS84</span> <span class="pre">+ellps=WGS84</span> <span class="pre">+towgs84=0,0,0&quot;</span> </code></p>
+<p><code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">&lt;-</span> <span class="pre">spTransform(shape,</span> <span class="pre">CRS(projection))</span></code></p>
+<p>Load the <code class="docutils literal notranslate"><span class="pre">raster</span></code> package to define a regular grid and then rasterize the shapefile to get a matrix</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;raster&quot;</span><span class="p">)</span>
+<span class="c1"># define latitude-longitude range and resolution</span>
+<span class="n">ext</span> <span class="o">&lt;-</span> <span class="nf">extent</span><span class="p">(</span><span class="m">-30</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">75</span><span class="p">)</span>
+<span class="n">gridresolution</span> <span class="o">&lt;-</span> <span class="m">0.5</span>
+
+<span class="n">r</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="n">gridresolution</span><span class="p">)</span>
+
+<span class="c1">## Rasterize the shapefile</span>
+<span class="n">rr</span> <span class="o">&lt;-</span> <span class="nf">rasterize</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">mymatrix</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">rr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot the matrix</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">image</span><span class="p">(</span><span class="n">mymatrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/shapefile_nc_raster_9_0.png" src="../../../_images/shapefile_nc_raster_9_0.png" />
+</div>
+</div>
+<p>It seems that latitude is the second axis so we need to transpose the matrix before plotting</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">image</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">mymatrix</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/shapefile_nc_raster_11_0.png" src="../../../_images/shapefile_nc_raster_11_0.png" />
+</div>
+</div>
+<p>Still not good: Latitude is in decreasing order. We need to reverse the first axis (keep the second one):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">final_matrix</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="n">mymatrix</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">rev</span><span class="p">)</span>
+<span class="nf">image</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">final_matrix</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/shapefile_nc_raster_13_0.png" src="../../../_images/shapefile_nc_raster_13_0.png" />
+</div>
+</div>
+<p>That looks good but what do the values mean? We can find it out.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">legend</span> <span class="o">=</span> <span class="n">shape</span><span class="o">@</span><span class="n">data</span>
+<span class="n">legend</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th></th><th scope=col>IPCC17</th><th scope=col>IPCC5</th></tr></thead>
+<tbody>
+	<tr><th scope=row>0</th><td>Alpine North     </td><td>Alpine           </td></tr>
+	<tr><th scope=row>1</th><td>Alpine South     </td><td>Alpine           </td></tr>
+	<tr><th scope=row>2</th><td>Anatolian        </td><td>Southern         </td></tr>
+	<tr><th scope=row>3</th><td>Arctic           </td><td>Northern         </td></tr>
+	<tr><th scope=row>4</th><td>Atlantic Central </td><td>Atlantic         </td></tr>
+	<tr><th scope=row>5</th><td>Atlantic North   </td><td>Atlantic         </td></tr>
+	<tr><th scope=row>6</th><td>Black Sea        </td><td>Southern         </td></tr>
+	<tr><th scope=row>7</th><td>Boreal           </td><td>Northern         </td></tr>
+	<tr><th scope=row>8</th><td>Continental      </td><td>Continental      </td></tr>
+	<tr><th scope=row>9</th><td>Eastern Mountains</td><td>Alpine           </td></tr>
+	<tr><th scope=row>10</th><td>Icelandic        </td><td>Northern         </td></tr>
+	<tr><th scope=row>11</th><td>Lusitanian       </td><td>Atlantic         </td></tr>
+	<tr><th scope=row>12</th><td>Med. Mountains   </td><td>Southern         </td></tr>
+	<tr><th scope=row>13</th><td>Med. North       </td><td>Southern         </td></tr>
+	<tr><th scope=row>14</th><td>Med. South       </td><td>Southern         </td></tr>
+	<tr><th scope=row>15</th><td>Nemoral          </td><td>Northern         </td></tr>
+	<tr><th scope=row>16</th><td>Pannonian        </td><td>Continental      </td></tr>
+	<tr><th scope=row>17</th><td>Steppic          </td><td>Continental      </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Now load the NetCDF library and create an output file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;RNetCDF&quot;</span><span class="p">)</span>
+<span class="c1"># create NetCDF file</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="nf">create.nc</span><span class="p">(</span><span class="s">&quot;gridded.nc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But we need to define the coordinate axes first before writing the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">latitude</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="n">gridresolution</span><span class="p">,</span><span class="n">length.out</span> <span class="o">=</span> <span class="nf">dim</span><span class="p">(</span><span class="n">final_matrix</span><span class="p">)[</span><span class="m">1</span><span class="p">])</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">-30</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="n">gridresolution</span><span class="p">,</span><span class="n">length.out</span> <span class="o">=</span> <span class="nf">dim</span><span class="p">(</span><span class="n">final_matrix</span><span class="p">)[</span><span class="m">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we write the axes first and then the data and close the file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># write axes</span>
+<span class="nf">dim.def.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;xaxis&quot;</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">longitude</span><span class="p">))</span>
+<span class="nf">var.def.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;xaxis&quot;</span><span class="p">,</span><span class="s">&quot;NC_DOUBLE&quot;</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;xaxis&quot;</span><span class="p">))</span>
+<span class="nf">var.put.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;xaxis&quot;</span><span class="p">,</span><span class="n">longitude</span><span class="p">)</span>
+<span class="nf">att.put.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;xaxis&quot;</span><span class="p">,</span><span class="s">&quot;units&quot;</span><span class="p">,</span><span class="s">&quot;NC_CHAR&quot;</span><span class="p">,</span><span class="s">&quot;degrees_east&quot;</span><span class="p">)</span>
+<span class="nf">att.put.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;xaxis&quot;</span><span class="p">,</span><span class="s">&quot;cartesian_axis&quot;</span><span class="p">,</span><span class="s">&quot;NC_CHAR&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+
+<span class="nf">dim.def.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;yaxis&quot;</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">latitude</span><span class="p">))</span>
+<span class="nf">var.def.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;yaxis&quot;</span><span class="p">,</span><span class="s">&quot;NC_DOUBLE&quot;</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;yaxis&quot;</span><span class="p">))</span>
+<span class="nf">var.put.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;yaxis&quot;</span><span class="p">,</span><span class="n">latitude</span><span class="p">)</span>
+<span class="nf">att.put.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;yaxis&quot;</span><span class="p">,</span><span class="s">&quot;units&quot;</span><span class="p">,</span><span class="s">&quot;NC_CHAR&quot;</span><span class="p">,</span><span class="s">&quot;degrees_north&quot;</span><span class="p">)</span>
+<span class="nf">att.put.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;yaxis&quot;</span><span class="p">,</span><span class="s">&quot;cartesian_axis&quot;</span><span class="p">,</span><span class="s">&quot;NC_CHAR&quot;</span><span class="p">,</span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+
+<span class="c1"># write data</span>
+<span class="nf">var.def.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;climate_region&quot;</span><span class="p">,</span><span class="s">&quot;NC_DOUBLE&quot;</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;yaxis&quot;</span><span class="p">,</span><span class="s">&quot;xaxis&quot;</span><span class="p">))</span>
+<span class="nf">var.put.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span> <span class="s">&quot;climate_region&quot;</span><span class="p">,</span> <span class="n">mymatrix</span><span class="p">)</span>
+
+<span class="c1"># close NetCDF file</span>
+<span class="nf">close.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check if that worked by running a system command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">system</span><span class="p">(</span><span class="s">&quot;ncdump -h gridded.nc&quot;</span><span class="p">,</span> <span class="n">intern</span><span class="o">=</span><span class="kc">TRUE</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'netcdf gridded {'</li>
+	<li>'dimensions:'</li>
+	<li>'\txaxis = 160 ;'</li>
+	<li>'\tyaxis = 90 ;'</li>
+	<li>'variables:'</li>
+	<li>'\tdouble xaxis(xaxis) ;'</li>
+	<li>'\t\txaxis:units = "degrees_east" ;'</li>
+	<li>'\t\txaxis:cartesian_axis = "x" ;'</li>
+	<li>'\tdouble yaxis(yaxis) ;'</li>
+	<li>'\t\tyaxis:units = "degrees_north" ;'</li>
+	<li>'\t\tyaxis:cartesian_axis = "y" ;'</li>
+	<li>'\tdouble climate_region(xaxis, yaxis) ;'</li>
+	<li>'}'</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># more nicely formatted:</span>
+<span class="nf">cat</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="nf">system</span><span class="p">(</span><span class="s">&quot;ncdump -h gridded.nc&quot;</span><span class="p">,</span> <span class="n">intern</span><span class="o">=</span><span class="kc">TRUE</span> <span class="p">),</span><span class="s">&#39;\n&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>netcdf gridded { 
+ dimensions: 
+ 	xaxis = 160 ; 
+ 	yaxis = 90 ; 
+ variables: 
+ 	double xaxis(xaxis) ; 
+ 		xaxis:units = &quot;degrees_east&quot; ; 
+ 		xaxis:cartesian_axis = &quot;x&quot; ; 
+ 	double yaxis(yaxis) ; 
+ 		yaxis:units = &quot;degrees_north&quot; ; 
+ 		yaxis:cartesian_axis = &quot;y&quot; ; 
+ 	double climate_region(xaxis, yaxis) ; 
+ } 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "iow_r_basic"
+        },
+        kernelOptions: {
+            kernelName: "iow_r_basic",
+            path: "./notebook_collection/converting_files/shapefile_nc_raster"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'iow_r_basic'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../shapefile_ascii_polygons/shapefile_ascii_polygons.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Converting shapefiles (.shp) to ASCII (coordinates of polygons)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../getm_prepare/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GETM preprocessing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Hagen Radtke and Florian Boergel<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

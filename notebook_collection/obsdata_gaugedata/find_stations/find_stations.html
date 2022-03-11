@@ -1,0 +1,913 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finding stations with most data / longest time coverage &#8212; IOW Notebook COllection</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Processing hydrographic observational data" href="../../obsdata_hydrography/obsdata_hydrography.html" />
+    <link rel="prev" title="Convert EmodNet tide gauge data to validator format" href="../convert_emodnet_validator/convert_emodnet_validator.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">IOW Notebook COllection</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  notebook_collection.ipynb
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebook_collection.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  accessing_data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/accessing_data.html">
+   Accessing data from remote or local sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/sealevel_emodnet/index.html">
+   Accessing EMODNET sea level data from tide gauges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  converting_files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/converting_files.html">
+   Converting files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/shapefile_ascii_polygons/shapefile_ascii_polygons.html">
+   Converting shapefiles (.shp) to ASCII (coordinates of polygons)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/shapefile_nc_raster/shapefile_nc_raster.html">
+   Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  getm_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../getm_prepare/index.html">
+   GETM preprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  git_tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/Untitled.html">
+   Git - How-to
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/git_start_v2.html">
+   Git - How-to
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  iow_esm
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/attempt_handling.html">
+   1. Set up the IOW ESM framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/automatic_postprocessing.html">
+   Default processing of raw output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/create_postprocess_task.html">
+   Create a new postprocess task
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  jupyter_notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../jupyter_notebooks/jupyter_notebooks.html">
+   What is an .ipynb File?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_postprocess
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_postprocess/index.html">
+   MOM5 output postprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_prepare/00_download_code_and_compile.html">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_gaugedata
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_gaugedata.html">
+   Processing tide gauge observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convert_emodnet_validator/convert_emodnet_validator.html">
+   Convert EmodNet tide gauge data to validator format
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_hydrography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/obsdata_hydrography.html">
+   Processing hydrographic observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  plots_and_maps
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/plots.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/plots_and_maps.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/basic_plotting/basic_plotting.html">
+   Basic plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/map_with_countries/map_with_countries.html">
+   Map with country borders
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  stat_timeseries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/stat_timeseries.html">
+   Time series analyses
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/regression_maps/regression.html">
+   AMO example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.html">
+   Removing seasonal observation bias from an irregular time series
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/notebook_collection/obsdata_gaugedata/find_stations/find_stations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/florianboergel/book_notebook_collection"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/florianboergel/book_notebook_collection/issues/new?title=Issue%20on%20page%20%2Fnotebook_collection/obsdata_gaugedata/find_stations/find_stations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/book_notebook_collection/master?urlpath=tree/notebook_collection/obsdata_gaugedata/find_stations/find_stations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-the-list-of-stations-from-the-file-names">
+   Getting the list of stations from the file names
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Finding stations with most data / longest time coverage</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-the-list-of-stations-from-the-file-names">
+   Getting the list of stations from the file names
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="finding-stations-with-most-data-longest-time-coverage">
+<h1>Finding stations with most data / longest time coverage<a class="headerlink" href="#finding-stations-with-most-data-longest-time-coverage" title="Permalink to this headline">¶</a></h1>
+<p>Here you will take high-resolution observations from EMODNET and pick the stations with the longest record.
+This is good if you want to know the best locations for model validation.</p>
+<div class="section" id="getting-the-list-of-stations-from-the-file-names">
+<h2>Getting the list of stations from the file names<a class="headerlink" href="#getting-the-list-of-stations-from-the-file-names" title="Permalink to this headline">¶</a></h2>
+<p>We get the list of stations from the directory <code class="docutils literal notranslate"><span class="pre">/data/sealevel/emodnet_hourly</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/silos/notebook_collection/obsdata_gaugedata/find_stations/&quot;</span><span class="p">)</span>
+<span class="n">datadir</span> <span class="o">=</span> <span class="s">&quot;/data/sealevel/emodnet_hourly&quot;</span>
+<span class="n">filenames</span> <span class="o">=</span> <span class="nf">system</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;ls -1 &quot;</span><span class="p">,</span><span class="n">datadir</span><span class="p">),</span><span class="n">intern</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">filenames</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'EP_ERD_INT_SLEV_AL_TS_NRT_A121TG.nc'</li>
+	<li>'EP_ERD_INT_SLEV_AL_TS_NRT_A2TG.nc'</li>
+	<li>'EP_ERD_INT_SLEV_AL_TS_NRT_AalesundTG.nc'</li>
+	<li>'EP_ERD_INT_SLEV_AL_TS_NRT_Aarhus.nc'</li>
+	<li>'EP_ERD_INT_SLEV_AL_TS_NRT_Aberdeen.nc'</li>
+</ol>
+</div></div>
+</div>
+<p>We need to extract the station name only</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stationnames</span><span class="o">=</span><span class="n">filenames</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">stationnames</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">stationnames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">substr</span><span class="p">(</span><span class="n">stationnames</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">start</span><span class="o">=</span><span class="m">27</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="nf">nchar</span><span class="p">(</span><span class="n">stationnames</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="m">-3</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">stationnames</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'A121TG'</li>
+	<li>'A2TG'</li>
+	<li>'AalesundTG'</li>
+	<li>'Aarhus'</li>
+	<li>'Aberdeen'</li>
+</ol>
+</div></div>
+</div>
+<p>The next step is to go through the existing files and extract the length of the time axis and the latitude and longitude parameters. We will store this information in a data.frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;RNetCDF&quot;</span><span class="p">)</span> <span class="c1"># package to load NetCDF data</span>
+<span class="n">gauge_stations</span> <span class="o">=</span> <span class="kc">NULL</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">stationnames</span><span class="p">))</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">filenames</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">nc</span> <span class="o">=</span> <span class="nf">open.nc</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">datadir</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">filenames</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">timeaxis</span> <span class="o">=</span> <span class="nf">var.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;time&quot;</span><span class="p">)</span>
+    <span class="c1">#timeunit = att.get.nc(nc,&quot;time&quot;,&quot;units&quot;)</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="nf">var.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;longitude&quot;</span><span class="p">))</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="nf">var.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;latitude&quot;</span><span class="p">))</span>
+    <span class="n">min_time</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">timeaxis</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+    <span class="n">max_time</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">timeaxis</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+    <span class="n">min_year</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">as.POSIXct</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">min_time</span><span class="p">,</span><span class="s">&quot;%Y&quot;</span><span class="p">))</span>
+    <span class="n">max_year</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">as.POSIXct</span><span class="p">(</span><span class="s">&quot;1970-01-01&quot;</span><span class="p">)</span><span class="o">+</span><span class="n">max_time</span><span class="p">,</span><span class="s">&quot;%Y&quot;</span><span class="p">))</span>
+    
+    <span class="c1">#    lon = var.get.nc(nc,&quot;lon&quot;)</span>
+    <span class="c1">#    lat = var.get.nc(nc,&quot;lat&quot;)</span>
+    <span class="c1">#    name = var.get.nc(nc,&quot;station_name&quot;)</span>
+    <span class="c1">#    country = var.get.nc(nc,&quot;station_country&quot;)</span>
+    <span class="n">mystation</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">timesteps</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">timeaxis</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">stationnames</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">min_year</span><span class="o">=</span><span class="n">min_year</span><span class="p">,</span> <span class="n">max_year</span><span class="o">=</span><span class="n">max_year</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">gauge_stations</span> <span class="o">=</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">gauge_stations</span><span class="p">,</span> <span class="n">mystation</span><span class="p">)</span>
+    <span class="nf">close.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">gauge_stations</span> <span class="o">=</span> <span class="n">gauge_stations</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">gauge_stations</span><span class="o">$</span><span class="n">min_year</span><span class="p">),]</span> <span class="c1"># sort by first timestep</span>
+<span class="n">gauge_stations</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,]</span> <span class="c1"># show first lines</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 345
+</pre></div>
+</div>
+<div class="output text_html"><table>
+<thead><tr><th></th><th scope=col>number</th><th scope=col>timesteps</th><th scope=col>name</th><th scope=col>min_year</th><th scope=col>max_year</th><th scope=col>lon</th><th scope=col>lat</th></tr></thead>
+<tbody>
+	<tr><th scope=row>182</th><td>182               </td><td>1173509           </td><td>Kungsholmsfort    </td><td>1901              </td><td>2021              </td><td>15.5894           </td><td>56.1053           </td></tr>
+	<tr><th scope=row>248</th><td>248               </td><td>1135665           </td><td>Ratan             </td><td>1901              </td><td>2021              </td><td>20.8950           </td><td>63.9861           </td></tr>
+	<tr><th scope=row>289</th><td>289               </td><td>1160374           </td><td>Stockholm         </td><td>1901              </td><td>2021              </td><td>18.0817           </td><td>59.3242           </td></tr>
+	<tr><th scope=row>281</th><td>281               </td><td> 969861           </td><td>Smogen            </td><td>1910              </td><td>2021              </td><td>11.2178           </td><td>58.3536           </td></tr>
+	<tr><th scope=row>72</th><td> 72               </td><td> 920860           </td><td>Furuogrund        </td><td>1916              </td><td>2021              </td><td>21.2306           </td><td>64.9158           </td></tr>
+	<tr><th scope=row>165</th><td>165               </td><td> 779952           </td><td>Klagshamn         </td><td>1929              </td><td>2021              </td><td>12.8936           </td><td>55.5222           </td></tr>
+	<tr><th scope=row>229</th><td>229               </td><td> 531857           </td><td>Oskarshamn        </td><td>1960              </td><td>2021              </td><td>16.4781           </td><td>57.2750           </td></tr>
+	<tr><th scope=row>321</th><td>321               </td><td> 531904           </td><td>Visby             </td><td>1960              </td><td>2021              </td><td>18.2844           </td><td>57.6392           </td></tr>
+	<tr><th scope=row>224</th><td>224               </td><td> 494694           </td><td>OlandsNorraUdde   </td><td>1961              </td><td>2021              </td><td>17.0972           </td><td>57.3661           </td></tr>
+	<tr><th scope=row>288</th><td>288               </td><td> 488333           </td><td>Stenungsund       </td><td>1962              </td><td>2021              </td><td>11.8325           </td><td>58.0933           </td></tr>
+	<tr><th scope=row>206</th><td>206               </td><td> 480999           </td><td>Marviken          </td><td>1964              </td><td>2019              </td><td>16.8372           </td><td>58.5536           </td></tr>
+	<tr><th scope=row>81</th><td> 81               </td><td> 469933           </td><td>GoteborgTorshamnen</td><td>1967              </td><td>2021              </td><td>11.7906           </td><td>57.6847           </td></tr>
+	<tr><th scope=row>251</th><td>251               </td><td> 452592           </td><td>Ringhals          </td><td>1967              </td><td>2021              </td><td>12.1125           </td><td>57.2497           </td></tr>
+	<tr><th scope=row>285</th><td>285               </td><td> 460903           </td><td>Spikarna          </td><td>1968              </td><td>2021              </td><td>17.5311           </td><td>62.3633           </td></tr>
+	<tr><th scope=row>43</th><td> 43               </td><td> 435324           </td><td>Degerby           </td><td>1971              </td><td>2021              </td><td>20.3848           </td><td>60.0319           </td></tr>
+	<tr><th scope=row>85</th><td> 85               </td><td> 435324           </td><td>Hamina            </td><td>1971              </td><td>2021              </td><td>27.1792           </td><td>60.5628           </td></tr>
+	<tr><th scope=row>86</th><td> 86               </td><td> 436063           </td><td>Hanko             </td><td>1971              </td><td>2021              </td><td>22.9766           </td><td>59.8229           </td></tr>
+	<tr><th scope=row>98</th><td> 98               </td><td> 435319           </td><td>Helsinki          </td><td>1971              </td><td>2021              </td><td>24.9562           </td><td>60.1536           </td></tr>
+	<tr><th scope=row>156</th><td>156               </td><td> 435319           </td><td>Kaskinen          </td><td>1971              </td><td>2021              </td><td>21.2148           </td><td>62.3440           </td></tr>
+	<tr><th scope=row>160</th><td>160               </td><td> 436068           </td><td>Kemi              </td><td>1971              </td><td>2021              </td><td>24.5153           </td><td>65.6729           </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Next step is to select the North Sea and Baltic Sea only.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lonrange</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-5</span><span class="p">,</span><span class="m">31</span><span class="p">)</span>
+<span class="n">latrange</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="m">67</span><span class="p">)</span>
+<span class="n">gauge_stations</span> <span class="o">=</span> <span class="n">gauge_stations</span><span class="p">[</span><span class="n">gauge_stations</span><span class="o">$</span><span class="n">lat</span> <span class="o">&gt;</span> <span class="n">latrange</span><span class="p">[</span><span class="m">1</span><span class="p">],]</span>
+<span class="n">gauge_stations</span> <span class="o">=</span> <span class="n">gauge_stations</span><span class="p">[</span><span class="n">gauge_stations</span><span class="o">$</span><span class="n">lat</span> <span class="o">&lt;</span> <span class="n">latrange</span><span class="p">[</span><span class="m">2</span><span class="p">],]</span>
+<span class="n">gauge_stations</span> <span class="o">=</span> <span class="n">gauge_stations</span><span class="p">[</span><span class="n">gauge_stations</span><span class="o">$</span><span class="n">lon</span> <span class="o">&gt;</span> <span class="n">lonrange</span><span class="p">[</span><span class="m">1</span><span class="p">],]</span>
+<span class="n">gauge_stations</span> <span class="o">=</span> <span class="n">gauge_stations</span><span class="p">[</span><span class="n">gauge_stations</span><span class="o">$</span><span class="n">lon</span> <span class="o">&lt;</span> <span class="n">lonrange</span><span class="p">[</span><span class="m">2</span><span class="p">],]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">gauge_stations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th></th><th scope=col>number</th><th scope=col>timesteps</th><th scope=col>name</th><th scope=col>min_year</th><th scope=col>max_year</th><th scope=col>lon</th><th scope=col>lat</th></tr></thead>
+<tbody>
+	<tr><th scope=row>182</th><td>182           </td><td>1173509       </td><td>Kungsholmsfort</td><td>1901          </td><td>2021          </td><td>15.5894       </td><td>56.1053       </td></tr>
+	<tr><th scope=row>248</th><td>248           </td><td>1135665       </td><td>Ratan         </td><td>1901          </td><td>2021          </td><td>20.8950       </td><td>63.9861       </td></tr>
+	<tr><th scope=row>289</th><td>289           </td><td>1160374       </td><td>Stockholm     </td><td>1901          </td><td>2021          </td><td>18.0817       </td><td>59.3242       </td></tr>
+	<tr><th scope=row>281</th><td>281           </td><td> 969861       </td><td>Smogen        </td><td>1910          </td><td>2021          </td><td>11.2178       </td><td>58.3536       </td></tr>
+	<tr><th scope=row>72</th><td> 72           </td><td> 920860       </td><td>Furuogrund    </td><td>1916          </td><td>2021          </td><td>21.2306       </td><td>64.9158       </td></tr>
+	<tr><th scope=row>165</th><td>165           </td><td> 779952       </td><td>Klagshamn     </td><td>1929          </td><td>2021          </td><td>12.8936       </td><td>55.5222       </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">measurements_in_box</span> <span class="o">=</span> <span class="n">gauge_stations</span>
+<span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span> <span class="o">=</span> <span class="m">-1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">myrank</span> <span class="o">=</span> <span class="m">1</span>
+<span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">min_year</span> <span class="o">&lt;</span> <span class="m">1950</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="m">-1</span><span class="p">)]</span><span class="o">=</span><span class="n">myrank</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;rank &quot;</span><span class="p">,</span><span class="n">myrank</span><span class="p">,</span><span class="s">&quot;: &quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="n">myrank</span><span class="p">),</span><span class="s">&quot; stations&quot;</span><span class="p">))</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">myrank</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="m">-1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.6</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">[</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">name</span><span class="o">==</span><span class="s">&quot;Stockholm&quot;</span><span class="p">,])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;rank 1: 6 stations&quot;
+    number timesteps      name min_year max_year     lon     lat rank
+289    289   1160374 Stockholm     1901     2021 18.0817 59.3242    1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">myrank</span> <span class="o">=</span> <span class="m">2</span>
+<span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">min_year</span> <span class="o">&lt;</span> <span class="m">1970</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="m">-1</span><span class="p">)]</span><span class="o">=</span><span class="n">myrank</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;rank &quot;</span><span class="p">,</span><span class="n">myrank</span><span class="p">,</span><span class="s">&quot;: &quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="n">myrank</span><span class="p">),</span><span class="s">&quot; stations&quot;</span><span class="p">))</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">myrank</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="m">-1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.6</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;rank 2: 8 stations&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">myrank</span> <span class="o">=</span> <span class="m">3</span>
+<span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">min_year</span> <span class="o">&lt;</span> <span class="m">1990</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="m">-1</span><span class="p">)]</span><span class="o">=</span><span class="n">myrank</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;rank &quot;</span><span class="p">,</span><span class="n">myrank</span><span class="p">,</span><span class="s">&quot;: &quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="n">myrank</span><span class="p">),</span><span class="s">&quot; stations&quot;</span><span class="p">))</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">myrank</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="m">-1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.6</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;rank 3: 19 stations&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">myrank</span> <span class="o">=</span> <span class="m">4</span>
+<span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">min_year</span> <span class="o">&lt;</span> <span class="m">2000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="m">-1</span><span class="p">)]</span><span class="o">=</span><span class="n">myrank</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;rank &quot;</span><span class="p">,</span><span class="n">myrank</span><span class="p">,</span><span class="s">&quot;: &quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="n">myrank</span><span class="p">),</span><span class="s">&quot; stations&quot;</span><span class="p">))</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">myrank</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="m">-1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.6</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;rank 4: 40 stations&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">myrank</span> <span class="o">=</span> <span class="m">5</span>
+<span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">min_year</span> <span class="o">&lt;</span> <span class="m">2010</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="m">-1</span><span class="p">)]</span><span class="o">=</span><span class="n">myrank</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;rank &quot;</span><span class="p">,</span><span class="n">myrank</span><span class="p">,</span><span class="s">&quot;: &quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="n">myrank</span><span class="p">),</span><span class="s">&quot; stations&quot;</span><span class="p">))</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">myrank</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="m">-1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.6</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;rank 5: 34 stations&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">myrank</span> <span class="o">=</span> <span class="m">6</span>
+<span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">min_year</span> <span class="o">&lt;</span> <span class="m">2015</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="m">-1</span><span class="p">)]</span><span class="o">=</span><span class="n">myrank</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;rank &quot;</span><span class="p">,</span><span class="n">myrank</span><span class="p">,</span><span class="s">&quot;: &quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">==</span><span class="n">myrank</span><span class="p">),</span><span class="s">&quot; stations&quot;</span><span class="p">))</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">myrank</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="m">-1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.6</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;rank 6: 90 stations&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stations_to_keep</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;CuxhavenTG&quot;</span><span class="p">)</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="n">i</span><span class="m">+1</span><span class="p">,</span><span class="n">to</span><span class="o">=</span><span class="nf">nrow</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lat</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nf">if </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">lon</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">&lt;</span> <span class="m">0.6</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nf">if </span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">timesteps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">timesteps</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+                            <span class="nf">if </span><span class="p">((</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">name</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">%in%</span> <span class="n">stations_to_keep</span><span class="p">)</span><span class="o">==</span><span class="kc">FALSE</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="m">-1</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+                            <span class="nf">if </span><span class="p">((</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%in%</span> <span class="n">stations_to_keep</span><span class="p">)</span><span class="o">==</span><span class="kc">FALSE</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="m">-1</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;remaining: &quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">&gt;</span><span class="m">0</span><span class="p">),</span><span class="s">&quot; stations&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;remaining: 138 stations&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us plot where these boxes are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">boxes_to_plot</span> <span class="o">=</span> <span class="n">measurements_in_box</span><span class="p">[</span><span class="n">measurements_in_box</span><span class="o">$</span><span class="n">rank</span><span class="o">&gt;</span><span class="m">0</span><span class="p">,]</span>
+<span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">xmin</span> <span class="o">=</span> <span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">lon</span><span class="m">-0.1</span>
+<span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">xmax</span> <span class="o">=</span> <span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">lon</span><span class="m">+0.1</span>
+<span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">ymin</span> <span class="o">=</span> <span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">lat</span><span class="m">-0.05</span>
+<span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">ymax</span> <span class="o">=</span> <span class="n">boxes_to_plot</span><span class="o">$</span><span class="n">lat</span><span class="m">+0.05</span>
+<span class="n">coastline</span><span class="o">=</span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;coastline_world.txt&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">coastline_baltic</span><span class="o">=</span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;coastline_baltic.txt&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">myplot</span> <span class="o">=</span> <span class="nf">ggplot</span><span class="p">()</span><span class="o">+</span>
+  <span class="nf">geom_rect</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">boxes_to_plot</span><span class="p">,</span><span class="n">mapping</span><span class="o">=</span><span class="nf">aes</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">rank</span><span class="p">))</span><span class="o">+</span>
+  <span class="nf">scale_fill_gradientn</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="nf">rainbow</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="n">end</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="m">0.7</span><span class="p">))</span><span class="o">+</span>
+  <span class="nf">geom_path</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coastline</span><span class="p">[</span><span class="n">coastline</span><span class="o">$</span><span class="n">V1</span><span class="o">&lt;</span><span class="m">0</span><span class="p">,],</span><span class="n">mapping</span><span class="o">=</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">V1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">V2</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;gray&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_path</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">coastline_baltic</span><span class="p">,</span><span class="n">mapping</span><span class="o">=</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">V1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">V2</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;gray&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">boxes_to_plot</span><span class="p">,</span><span class="n">mapping</span><span class="o">=</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">),</span><span class="n">hjust</span><span class="o">=</span><span class="s">&quot;left&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-6</span><span class="p">,</span><span class="m">32</span><span class="p">))</span><span class="o">+</span>
+  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">limits</span> <span class="o">=</span> <span class="n">latrange</span><span class="p">)</span>
+  
+<span class="nf">print</span><span class="p">(</span><span class="n">myplot</span><span class="p">)</span>
+<span class="nf">png</span><span class="p">(</span><span class="s">&quot;gauge_stations.png&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="m">1600</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="m">1080</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s">&quot;px&quot;</span><span class="p">,</span><span class="n">res</span><span class="o">=</span><span class="m">96</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">myplot</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+&quot;Removed 26579 rows containing missing values (geom_path).&quot;Warning message:
+&quot;Removed 9347 rows containing missing values (geom_path).&quot;Warning message:
+&quot;Removed 26579 rows containing missing values (geom_path).&quot;Warning message:
+&quot;Removed 9347 rows containing missing values (geom_path).&quot;
+</pre></div>
+</div>
+<div class="output text_html"><strong>png:</strong> 2</div><img alt="../../../_images/find_stations_19_2.png" src="../../../_images/find_stations_19_2.png" />
+</div>
+</div>
+<p>We save the station list to a csv file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.table</span><span class="p">(</span><span class="n">boxes_to_plot</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="s">&quot;lat&quot;</span><span class="p">,</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="s">&quot;rank&quot;</span><span class="p">,</span><span class="s">&quot;min_year&quot;</span><span class="p">,</span><span class="s">&quot;max_year&quot;</span><span class="p">,</span><span class="s">&quot;timesteps&quot;</span><span class="p">)],</span><span class="s">&quot;gauge_stations.csv&quot;</span><span class="p">,</span><span class="n">col.names</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">row.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;;&quot;</span><span class="p">,</span><span class="n">quote</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "iow_r"
+        },
+        kernelOptions: {
+            kernelName: "iow_r",
+            path: "./notebook_collection/obsdata_gaugedata/find_stations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'iow_r'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../convert_emodnet_validator/convert_emodnet_validator.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Convert EmodNet tide gauge data to validator format</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../obsdata_hydrography/obsdata_hydrography.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Processing hydrographic observational data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Hagen Radtke and Florian Boergel<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

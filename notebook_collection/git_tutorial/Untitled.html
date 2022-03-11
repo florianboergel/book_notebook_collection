@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git - How-to &#8212; IOW Notebook COllection</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Git - How-to" href="git_start_v2.html" />
+    <link rel="prev" title="GETM preprocessing" href="../getm_prepare/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">IOW Notebook COllection</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  notebook_collection.ipynb
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebook_collection.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  accessing_data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../accessing_data/accessing_data.html">
+   Accessing data from remote or local sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../accessing_data/sealevel_emodnet/index.html">
+   Accessing EMODNET sea level data from tide gauges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  converting_files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converting_files/converting_files.html">
+   Converting files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converting_files/shapefile_ascii_polygons/shapefile_ascii_polygons.html">
+   Converting shapefiles (.shp) to ASCII (coordinates of polygons)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converting_files/shapefile_nc_raster/shapefile_nc_raster.html">
+   Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  getm_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getm_prepare/index.html">
+   GETM preprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  git_tutorial
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Git - How-to
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="git_start_v2.html">
+   Git - How-to
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  iow_esm
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../iow_esm/attempt_handling.html">
+   1. Set up the IOW ESM framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../iow_esm/automatic_postprocessing.html">
+   Default processing of raw output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../iow_esm/create_postprocess_task.html">
+   Create a new postprocess task
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  jupyter_notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter_notebooks/jupyter_notebooks.html">
+   What is an .ipynb File?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_postprocess
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mom5_postprocess/index.html">
+   MOM5 output postprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mom5_prepare/00_download_code_and_compile.html">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_gaugedata
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_gaugedata/obsdata_gaugedata.html">
+   Processing tide gauge observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_gaugedata/convert_emodnet_validator/convert_emodnet_validator.html">
+   Convert EmodNet tide gauge data to validator format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_gaugedata/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_hydrography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_hydrography/obsdata_hydrography.html">
+   Processing hydrographic observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../obsdata_hydrography/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  plots_and_maps
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/plots.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/plots_and_maps.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/basic_plotting/basic_plotting.html">
+   Basic plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps/map_with_countries/map_with_countries.html">
+   Map with country borders
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  stat_timeseries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat_timeseries/stat_timeseries.html">
+   Time series analyses
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat_timeseries/regression_maps/regression.html">
+   AMO example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.html">
+   Removing seasonal observation bias from an irregular time series
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebook_collection/git_tutorial/Untitled.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/florianboergel/book_notebook_collection"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/florianboergel/book_notebook_collection/issues/new?title=Issue%20on%20page%20%2Fnotebook_collection/git_tutorial/Untitled.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/book_notebook_collection/master?urlpath=tree/notebook_collection/git_tutorial/Untitled.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Git - How-to</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="git-how-to">
+<h1>Git - How-to<a class="headerlink" href="#git-how-to" title="Permalink to this headline">¶</a></h1>
+<p><strong>0. Configure git</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;User Name&quot;</span>
+git config --global user.email user.name@io-warnemuende.de
+</pre></div>
+</div>
+<p><strong>1. Create a new empty repository</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir git-tutorial
+<span class="nb">cd</span> git-tutorial
+git init
+</pre></div>
+</div>
+<p>Now the directory is a git repository</p>
+<p><strong>2. Fill the repository with content and check the status</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;file1&quot;</span> &gt; file1.txt
+<span class="nb">echo</span> <span class="s2">&quot;file2&quot;</span> &gt; file2.txt
+mkdir dir1
+<span class="nb">echo</span> <span class="s2">&quot;file3&quot;</span> &gt; dir1/file3.txt
+git status
+</pre></div>
+</div>
+<p>You will see two untracked files and one directory.
+Until you won`t “add” them, git will do nothing with these files.
+Git has a <em>three-step</em> approach:</p>
+<ol class="simple">
+<li><p>Modify or create files</p></li>
+<li><p>Mark the changes to be ready, i.e. add them to the so-called stating area.
+(2a. Check what you put one stage carefully)</p></li>
+<li><p>Make a snapshot of your repository, i.e. commit the changes.</p></li>
+</ol>
+<p><strong>3. Add everything to the staging area</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add *
+</pre></div>
+</div>
+<p>This tells git that these files are candidates for the next commit.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<p>You will see three new files.
+Here is the point to check if you really want to add them all.</p>
+<p><strong>4. Make the first commit (which corresponds to a snapshot of your repository)</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -m <span class="s2">&quot;Initial commit.&quot;</span>
+</pre></div>
+</div>
+<p>This produces a snapshot of your repo with a unique ID and the descriptive message “Initial commit”.<br />
+Use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git log
+</pre></div>
+</div>
+<p>to see this ID and the message.<br />
+Use again</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<p>to see that your working directory, the staging area and the last snapshot are identical.<br />
+Thus the repository is clean.</p>
+<p><strong>5. Modify your files</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;change&quot;</span> &gt;&gt; file1.txt
+<span class="nb">echo</span> <span class="s2">&quot;change&quot;</span> &gt;&gt; file2.txt
+<span class="nb">echo</span> <span class="s2">&quot;change&quot;</span> &gt;&gt; dir1/file3.txt
+git status
+</pre></div>
+</div>
+<p>Git has recognized that your files have changed.
+However, since nothing is added to the staging area, nothing can be commited.<br />
+You can use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git diff
+</pre></div>
+</div>
+<p>to see your modifications before you add them.</p>
+<p><strong>6. Split your snapshots logically</strong></p>
+<p>Add your to the staging area, such that you organize snapshots logically, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add file1.txt file2.txt
+git diff master
+</pre></div>
+</div>
+<p>to finally check your changes before commiting (master refers to the master branch, see later)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -m <span class="s2">&quot;Changed top-level files&quot;</span>
+</pre></div>
+</div>
+<p>Use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<p>to see that nothing happened to file3.txt. Let’s add and commit these changes now.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add dir1/file3.txt
+git commit -m <span class="s2">&quot;Changed low-level file&quot;</span>
+</pre></div>
+</div>
+<p>Now everything is clean</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<p><strong>7. Use branches (if necessary)</strong></p>
+<p>The default branch in git is the master branch. At the moment your are working on that branch.
+If you work on a feature and you don’t know yet if it will be finally be part of your project, i.e. in the master branch,
+you can use an extra branch for experimenting.
+Create a new branch and switch to it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git branch feature
+git checkout feature
+</pre></div>
+</div>
+<p>Make your experimental changes and add and commit them in usual manner</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;experiment&quot;</span> &gt;&gt; file1.txt
+<span class="nb">echo</span> <span class="s2">&quot;experiment&quot;</span> &gt;&gt; file2.txt
+git add file1.txt
+git commit -m <span class="s2">&quot;Added experimental feature in file1&quot;</span>
+git add file2.txt
+git commit -m <span class="s2">&quot;Added experimental feature in file2&quot;</span>
+</pre></div>
+</div>
+<p>Imagine there is an urgent need to change your project without the experiments, i.e. the master branch.
+You can also switch back to the master branch and make your urgent changes there.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
+</pre></div>
+</div>
+<p>You can see that there are no experiments anymore (dont’t worry they are stored in the feature branch)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat file1.txt file2.txt
+</pre></div>
+</div>
+<p>Make your urgent fix now and add and commit it</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;urgent&quot;</span> &gt;&gt; dir1/file3.txt
+git add dir1/file3.txt
+git commit -m <span class="s2">&quot;Urgent fix for low-level file&quot;</span>
+</pre></div>
+</div>
+<p>You can now also add a tag for this important snapshot</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git tag -a urgent-fix -m <span class="s2">&quot;Urgent fix for low-level file&quot;</span>
+</pre></div>
+</div>
+<p>Now we can go back to our experiments</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout feature
+</pre></div>
+</div>
+<p>We want to have the urgent fix here as well.
+Therefor we want to merge the changes happened in master into this branch</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git merge master
+</pre></div>
+</div>
+<p>Now we have the urgent fix here as well, see</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git log
+</pre></div>
+</div>
+<p>We now realize that we are done with our experiments and we want to have this feature in the master branch as well.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i s.experiment.feature.g file1.txt
+sed -i s.experiment.feature.g file2.txt
+</pre></div>
+</div>
+<p>Let’s add and commit the lastest changes and merge this branch into the master</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add *
+git commit -m <span class="s2">&quot;Feature is implemented&quot;</span>
+git checkout master
+git merge feature
+</pre></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "iow_python",
+            path: "./notebook_collection/git_tutorial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'iow_python'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../getm_prepare/index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">GETM preprocessing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="git_start_v2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Git - How-to</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Hagen Radtke and Florian Boergel<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

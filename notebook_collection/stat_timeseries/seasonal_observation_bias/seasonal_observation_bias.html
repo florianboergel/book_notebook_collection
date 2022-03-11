@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Removing seasonal observation bias from an irregular time series &#8212; IOW Notebook COllection</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../../useful_commands/give_read_permissions_recursively.html" />
+    <link rel="prev" title="AMO example" href="../regression_maps/regression.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">IOW Notebook COllection</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  notebook_collection.ipynb
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebook_collection.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  accessing_data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/accessing_data.html">
+   Accessing data from remote or local sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/sealevel_emodnet/index.html">
+   Accessing EMODNET sea level data from tide gauges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  converting_files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/converting_files.html">
+   Converting files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/shapefile_ascii_polygons/shapefile_ascii_polygons.html">
+   Converting shapefiles (.shp) to ASCII (coordinates of polygons)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/shapefile_nc_raster/shapefile_nc_raster.html">
+   Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  getm_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../getm_prepare/index.html">
+   GETM preprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  git_tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/Untitled.html">
+   Git - How-to
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/git_start_v2.html">
+   Git - How-to
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  iow_esm
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/attempt_handling.html">
+   1. Set up the IOW ESM framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/automatic_postprocessing.html">
+   Default processing of raw output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/create_postprocess_task.html">
+   Create a new postprocess task
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  jupyter_notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../jupyter_notebooks/jupyter_notebooks.html">
+   What is an .ipynb File?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_postprocess
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_postprocess/index.html">
+   MOM5 output postprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_prepare/00_download_code_and_compile.html">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_gaugedata
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/obsdata_gaugedata.html">
+   Processing tide gauge observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/convert_emodnet_validator/convert_emodnet_validator.html">
+   Convert EmodNet tide gauge data to validator format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_hydrography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/obsdata_hydrography.html">
+   Processing hydrographic observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  plots_and_maps
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/plots.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/plots_and_maps.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/basic_plotting/basic_plotting.html">
+   Basic plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../plots_and_maps/map_with_countries/map_with_countries.html">
+   Map with country borders
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  stat_timeseries
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stat_timeseries.html">
+   Time series analyses
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression_maps/regression.html">
+   AMO example
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Removing seasonal observation bias from an irregular time series
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/notebook_collection/stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/florianboergel/book_notebook_collection"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/florianboergel/book_notebook_collection/issues/new?title=Issue%20on%20page%20%2Fnotebook_collection/stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/book_notebook_collection/master?urlpath=tree/notebook_collection/stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Removing seasonal observation bias from an irregular time series</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="removing-seasonal-observation-bias-from-an-irregular-time-series">
+<h1>Removing seasonal observation bias from an irregular time series<a class="headerlink" href="#removing-seasonal-observation-bias-from-an-irregular-time-series" title="Permalink to this headline">¶</a></h1>
+<p>The ICES database contains observation data for Landsort Deep SST from the 19th century on. Can we find out if there is a long-term trend?</p>
+<p>Let us first load the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/silod5/radtke/notebooks/stat_timeseries/seasonal_observation_bias/&quot;</span><span class="p">)</span>
+<span class="n">icesdata</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;sst_by31.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;;&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">icesdata</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="p">,</span><span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;year&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>decimalyear</th><th scope=col>temperature</th></tr></thead>
+<tbody>
+	<tr><td>1877.566</td><td>15.40   </td></tr>
+	<tr><td>1891.680</td><td>10.40   </td></tr>
+	<tr><td>1893.505</td><td>13.55   </td></tr>
+	<tr><td>1898.284</td><td> 2.07   </td></tr>
+	<tr><td>1898.713</td><td>11.53   </td></tr>
+	<tr><td>1899.418</td><td> 5.56   </td></tr>
+</tbody>
+</table>
+</div><img alt="../../../_images/seasonal_observation_bias_1_1.png" src="../../../_images/seasonal_observation_bias_1_1.png" />
+</div>
+</div>
+<p>Let’s try to do a GAMM analysis</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;mgcv&quot;</span><span class="p">)</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">1870</span><span class="p">,</span><span class="n">to</span><span class="o">=</span><span class="m">2020</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="n">ices_gamm</span> <span class="o">=</span> <span class="nf">gamm</span><span class="p">(</span><span class="n">temperature</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x_values</span><span class="p">))</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">icesdata</span><span class="p">,</span> 
+                 <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">decimalyear</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">temperature</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/seasonal_observation_bias_3_0.png" src="../../../_images/seasonal_observation_bias_3_0.png" />
+</div>
+</div>
+<p>That looks weird: Do we really see a cooling here?</p>
+<p>These data are irregular and have a pronounced seasonal cycle.</p>
+<p>You may find a <strong>seasonal observation bias</strong>:
+Assume you find a long-term trend - is that</p>
+<ul class="simple">
+<li><p>because it is actually getting warmer, or</p></li>
+<li><p>because you measured more often in summer?</p></li>
+</ul>
+<p>Let’s add a column <strong>season</strong> to the data frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the year</span>
+<span class="n">icesdata</span><span class="o">$</span><span class="n">year</span> <span class="o">=</span> <span class="nf">floor</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">)</span>
+<span class="c1"># subtract it from decimalyear to get the season</span>
+<span class="n">icesdata</span><span class="o">$</span><span class="n">season</span> <span class="o">=</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span> <span class="o">-</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">year</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">icesdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>decimalyear</th><th scope=col>temperature</th><th scope=col>year</th><th scope=col>season</th></tr></thead>
+<tbody>
+	<tr><td>1877.566 </td><td>15.40    </td><td>1877     </td><td>0.5655738</td></tr>
+	<tr><td>1891.680 </td><td>10.40    </td><td>1891     </td><td>0.6803279</td></tr>
+	<tr><td>1893.505 </td><td>13.55    </td><td>1893     </td><td>0.5054645</td></tr>
+	<tr><td>1898.284 </td><td> 2.07    </td><td>1898     </td><td>0.2841530</td></tr>
+	<tr><td>1898.713 </td><td>11.53    </td><td>1898     </td><td>0.7131148</td></tr>
+	<tr><td>1899.418 </td><td> 5.56    </td><td>1899     </td><td>0.4180328</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We can now fit a statistical model like this:
+$<span class="math notranslate nohighlight">\( temperature = \beta_0 + s_1(decimalyear) + s_2(season) + \varepsilon \)</span>$</p>
+<p>which explicitly contains seasonality.</p>
+<p>This idea follows this online tutorial:
+[ <a class="reference external" href="https://www.fromthebottomoftheheap.net/2014/05/09/modelling-seasonal-data-with-gam/">https://www.fromthebottomoftheheap.net/2014/05/09/modelling-seasonal-data-with-gam/</a> ]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ices_gamm</span> <span class="o">=</span> <span class="nf">gamm</span><span class="p">(</span><span class="n">temperature</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">x_values</span><span class="p">))</span> <span class="o">+</span> <span class="nf">s</span><span class="p">(</span><span class="n">season</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cc&quot;</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">12</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">icesdata</span><span class="p">,</span> 
+                 <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">decimalyear</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span> <span class="n">season</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">,</span> 
+                 <span class="n">correlation</span> <span class="o">=</span> <span class="nf">corCAR1</span><span class="p">(</span><span class="n">form</span> <span class="o">=</span> <span class="o">~</span> <span class="n">decimalyear</span><span class="o">|</span><span class="n">year</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/seasonal_observation_bias_7_0.png" src="../../../_images/seasonal_observation_bias_7_0.png" />
+<img alt="../../../_images/seasonal_observation_bias_7_1.png" src="../../../_images/seasonal_observation_bias_7_1.png" />
+</div>
+</div>
+<p>Now we want to plot the temperature trend together with the data. To do so, we have to make a prediction term by term:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="o">$</span><span class="n">coefficients</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl class=dl-horizontal>
+	<dt>(Intercept)</dt>
+		<dd>9.13389779931161</dd>
+	<dt>s(decimalyear).1</dt>
+		<dd>-2.68996240756128</dd>
+	<dt>s(decimalyear).2</dt>
+		<dd>-2.35917644387969</dd>
+	<dt>s(decimalyear).3</dt>
+		<dd>-1.98727394809362</dd>
+	<dt>s(decimalyear).4</dt>
+		<dd>-1.67579649229786</dd>
+	<dt>s(decimalyear).5</dt>
+		<dd>-1.36176245042601</dd>
+	<dt>s(decimalyear).6</dt>
+		<dd>-1.04065406547608</dd>
+	<dt>s(decimalyear).7</dt>
+		<dd>-0.823061455467049</dd>
+	<dt>s(decimalyear).8</dt>
+		<dd>-0.790099300923242</dd>
+	<dt>s(decimalyear).9</dt>
+		<dd>-0.196055066332962</dd>
+	<dt>s(decimalyear).10</dt>
+		<dd>0.0294199416168966</dd>
+	<dt>s(decimalyear).11</dt>
+		<dd>0.0300263396688803</dd>
+	<dt>s(decimalyear).12</dt>
+		<dd>1.22173679697343</dd>
+	<dt>s(decimalyear).13</dt>
+		<dd>1.95419596079969</dd>
+	<dt>s(decimalyear).14</dt>
+		<dd>2.3197446048653</dd>
+	<dt>s(decimalyear).15</dt>
+		<dd>1.34629030434993</dd>
+	<dt>s(season).1</dt>
+		<dd>-6.38722798270574</dd>
+	<dt>s(season).2</dt>
+		<dd>-6.59266734062812</dd>
+	<dt>s(season).3</dt>
+		<dd>-4.91834885522216</dd>
+	<dt>s(season).4</dt>
+		<dd>-1.34533742840532</dd>
+	<dt>s(season).5</dt>
+		<dd>3.87310539736047</dd>
+	<dt>s(season).6</dt>
+		<dd>9.09111236594179</dd>
+	<dt>s(season).7</dt>
+		<dd>9.98226675473659</dd>
+	<dt>s(season).8</dt>
+		<dd>6.05238058755133</dd>
+	<dt>s(season).9</dt>
+		<dd>2.32899574608065</dd>
+	<dt>s(season).10</dt>
+		<dd>-0.791946306060181</dd>
+</dl>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the intercept - it is the first of the coefficients</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+<span class="n">intercept</span>
+
+<span class="c1"># predict the terms one by one</span>
+<span class="n">my_prediction</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">,</span><span class="n">se.fit</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;terms&quot;</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">my_prediction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>(Intercept):</strong> 9.13389779931161</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Length Class  Mode   
+fit    2150   -none- numeric
+se.fit 2150   -none- numeric
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the temperature from the first columm</span>
+<span class="n">pred_temperature</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># get minimum and maximum temperature</span>
+<span class="n">pred_temperature_min</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span> <span class="o">-</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+<span class="n">pred_temperature_max</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># do the plot</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">temperature</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_min</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_max</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/seasonal_observation_bias_11_0.png" src="../../../_images/seasonal_observation_bias_11_0.png" />
+</div>
+</div>
+<p>Where is the trend significant? We define a function for that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################</span>
+<span class="c1">## Functions for derivatives of GAM(M) models ##</span>
+<span class="c1">################################################</span>
+<span class="n">Deriv</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="m">1e-7</span><span class="p">,</span> <span class="n">newdata</span><span class="p">,</span> <span class="n">term</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">if</span><span class="p">(</span><span class="nf">inherits</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s">&quot;gamm&quot;</span><span class="p">))</span>
+        <span class="n">mod</span> <span class="o">&lt;-</span> <span class="n">mod</span><span class="o">$</span><span class="n">gam</span>
+    <span class="n">m.terms</span> <span class="o">&lt;-</span> <span class="nf">attr</span><span class="p">(</span><span class="nf">terms</span><span class="p">(</span><span class="n">mod</span><span class="p">),</span> <span class="s">&quot;term.labels&quot;</span><span class="p">)</span>
+    <span class="nf">if</span><span class="p">(</span><span class="nf">missing</span><span class="p">(</span><span class="n">newdata</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">newD</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="nf">model.frame</span><span class="p">(</span><span class="n">mod</span><span class="p">)[,</span> <span class="n">m.terms</span><span class="p">,</span> <span class="n">drop</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">],</span>
+                       <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">seq</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">length</span> <span class="o">=</span> <span class="n">n</span><span class="p">))</span>
+        <span class="nf">names</span><span class="p">(</span><span class="n">newD</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">m.terms</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+        <span class="n">newD</span> <span class="o">&lt;-</span> <span class="n">newdata</span>
+    <span class="p">}</span>
+    <span class="n">newDF</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">newD</span><span class="p">)</span> <span class="c1">## needs to be a data frame for predict</span>
+    <span class="n">X0</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">newDF</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;lpmatrix&quot;</span><span class="p">)</span>
+    <span class="n">newDF</span> <span class="o">&lt;-</span> <span class="n">newDF</span> <span class="o">+</span> <span class="n">eps</span>
+    <span class="n">X1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">newDF</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;lpmatrix&quot;</span><span class="p">)</span>
+    <span class="n">Xp</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">X1</span> <span class="o">-</span> <span class="n">X0</span><span class="p">)</span> <span class="o">/</span> <span class="n">eps</span>
+    <span class="n">Xp.r</span> <span class="o">&lt;-</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">Xp</span><span class="p">)</span>
+    <span class="n">Xp.c</span> <span class="o">&lt;-</span> <span class="nf">NCOL</span><span class="p">(</span><span class="n">Xp</span><span class="p">)</span>
+    <span class="c1">## dims of bs</span>
+    <span class="n">bs.dims</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">mod</span><span class="o">$</span><span class="n">smooth</span><span class="p">,</span> <span class="s">&quot;[[&quot;</span><span class="p">,</span> <span class="s">&quot;bs.dim&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="m">1</span>
+    <span class="c1">## number of smooth terms</span>
+    <span class="n">t.labs</span> <span class="o">&lt;-</span> <span class="nf">attr</span><span class="p">(</span><span class="n">mod</span><span class="o">$</span><span class="n">terms</span><span class="p">,</span> <span class="s">&quot;term.labels&quot;</span><span class="p">)</span>
+    <span class="c1">## match the term with the the terms in the model</span>
+    <span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">missing</span><span class="p">(</span><span class="n">term</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">want</span> <span class="o">&lt;-</span> <span class="nf">grep</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">t.labs</span><span class="p">)</span>
+        <span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">identical</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">want</span><span class="p">),</span> <span class="nf">length</span><span class="p">(</span><span class="n">term</span><span class="p">)))</span>
+            <span class="nf">stop</span><span class="p">(</span><span class="s">&quot;One or more &#39;term&#39;s not found in model!&quot;</span><span class="p">)</span>
+        <span class="n">t.labs</span> <span class="o">&lt;-</span> <span class="n">t.labs</span><span class="p">[</span><span class="n">want</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">nt</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">t.labs</span><span class="p">)</span>
+    <span class="c1">## list to hold the derivatives</span>
+    <span class="n">lD</span> <span class="o">&lt;-</span> <span class="nf">vector</span><span class="p">(</span><span class="n">mode</span> <span class="o">=</span> <span class="s">&quot;list&quot;</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="n">nt</span><span class="p">)</span>
+    <span class="nf">names</span><span class="p">(</span><span class="n">lD</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">t.labs</span>
+    <span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="n">nt</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">Xi</span> <span class="o">&lt;-</span> <span class="n">Xp</span> <span class="o">*</span> <span class="m">0</span>
+        <span class="n">want</span> <span class="o">&lt;-</span> <span class="nf">grep</span><span class="p">(</span><span class="n">t.labs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">X1</span><span class="p">))</span>
+        <span class="n">Xi</span><span class="p">[,</span> <span class="n">want</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">Xp</span><span class="p">[,</span> <span class="n">want</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">&lt;-</span> <span class="n">Xi</span> <span class="o">%*%</span> <span class="nf">coef</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+        <span class="n">df.sd</span> <span class="o">&lt;-</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">Xi</span> <span class="o">%*%</span> <span class="n">mod</span><span class="o">$</span><span class="n">Vp</span> <span class="o">*</span> <span class="n">Xi</span><span class="p">)</span><span class="o">^</span><span class="n">.</span><span class="m">5</span>
+        <span class="n">lD</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">deriv</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">se.deriv</span> <span class="o">=</span> <span class="n">df.sd</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nf">class</span><span class="p">(</span><span class="n">lD</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;Deriv&quot;</span>
+    <span class="n">lD</span><span class="o">$</span><span class="n">gamModel</span> <span class="o">&lt;-</span> <span class="n">mod</span>
+    <span class="n">lD</span><span class="o">$</span><span class="n">eps</span> <span class="o">&lt;-</span> <span class="n">eps</span>
+    <span class="n">lD</span><span class="o">$</span><span class="n">eval</span> <span class="o">&lt;-</span> <span class="n">newD</span> <span class="o">-</span> <span class="n">eps</span>
+    <span class="n">lD</span> <span class="c1">##return</span>
+<span class="p">}</span>
+                
+<span class="c1"># return those points where the derivative is 95% significant                       </span>
+<span class="n">signif_deriv</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">my_gamm</span><span class="p">,</span><span class="n">term</span><span class="p">,</span><span class="n">other_terms</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">my_deriv</span> <span class="o">=</span> <span class="nf">Deriv</span><span class="p">(</span><span class="n">my_gamm</span><span class="p">)</span>
+    <span class="n">deriv_is_significant</span> <span class="o">=</span> <span class="nf">abs</span><span class="p">(</span><span class="n">my_deriv</span><span class="p">[[</span><span class="n">term</span><span class="p">]]</span><span class="o">$</span><span class="n">deriv</span><span class="p">)</span><span class="o">&gt;</span><span class="m">1.96</span><span class="o">*</span><span class="nf">abs</span><span class="p">(</span><span class="n">my_deriv</span><span class="p">[[</span><span class="n">term</span><span class="p">]]</span><span class="o">$</span><span class="n">se.deriv</span><span class="p">)</span>
+    <span class="n">x_values</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">V1</span> <span class="o">=</span> <span class="n">my_deriv</span><span class="o">$</span><span class="n">eval</span><span class="p">)</span>
+    <span class="nf">colnames</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span><span class="o">=</span><span class="n">term</span>
+    <span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">is.null</span><span class="p">(</span><span class="n">other_terms</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">other_term</span> <span class="n">in</span> <span class="n">other_terms</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">x_values</span><span class="p">[,</span><span class="n">other_term</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">y_values</span> <span class="o">=</span> <span class="nf">predict.gam</span><span class="p">(</span><span class="n">my_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;terms&quot;</span><span class="p">)[,</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;s(&quot;</span><span class="p">,</span><span class="n">term</span><span class="p">,</span><span class="s">&quot;)&quot;</span><span class="p">)]</span>
+    <span class="n">y_values</span><span class="p">[</span><span class="o">!</span><span class="n">deriv_is_significant</span><span class="p">]</span><span class="o">=</span><span class="kc">NA</span>
+    <span class="n">y_values</span> <span class="o">=</span> <span class="n">y_values</span> <span class="o">+</span> <span class="n">my_gamm</span><span class="o">$</span><span class="n">gam</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_values</span><span class="p">[,</span><span class="n">term</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">y_values</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s calculate where the trend is significant:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">significant_derivative_points</span> <span class="o">=</span> <span class="nf">signif_deriv</span><span class="p">(</span><span class="n">ices_gamm</span><span class="p">,</span><span class="n">term</span><span class="o">=</span><span class="s">&quot;decimalyear&quot;</span><span class="p">,</span><span class="n">other_terms</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;season&quot;</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">temperature</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_min</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_max</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">significant_derivative_points</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/seasonal_observation_bias_15_0.png" src="../../../_images/seasonal_observation_bias_15_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "iow_r"
+        },
+        kernelOptions: {
+            kernelName: "iow_r",
+            path: "./notebook_collection/stat_timeseries/seasonal_observation_bias"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'iow_r'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../regression_maps/regression.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">AMO example</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../useful_commands/give_read_permissions_recursively.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Hagen Radtke and Florian Boergel<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

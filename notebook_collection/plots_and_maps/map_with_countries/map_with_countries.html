@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map with country borders &#8212; IOW Notebook COllection</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="Untitled%20Folder%201/Untitled.html" />
+    <link rel="prev" title="Basic plotting" href="../basic_plotting/basic_plotting.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">IOW Notebook COllection</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  notebook_collection.ipynb
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notebook_collection.html">
+   IOW collection of Jupyter notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  accessing_data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/accessing_data.html">
+   Accessing data from remote or local sources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../accessing_data/sealevel_emodnet/index.html">
+   Accessing EMODNET sea level data from tide gauges
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  converting_files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/converting_files.html">
+   Converting files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/shapefile_ascii_polygons/shapefile_ascii_polygons.html">
+   Converting shapefiles (.shp) to ASCII (coordinates of polygons)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converting_files/shapefile_nc_raster/shapefile_nc_raster.html">
+   Converting shapefiles (.shp) to gridded/rastered NetCDF (.nc)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  getm_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../getm_prepare/index.html">
+   GETM preprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  git_tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/Untitled.html">
+   Git - How-to
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../git_tutorial/git_start_v2.html">
+   Git - How-to
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  iow_esm
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/attempt_handling.html">
+   1. Set up the IOW ESM framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/automatic_postprocessing.html">
+   Default processing of raw output
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../iow_esm/create_postprocess_task.html">
+   Create a new postprocess task
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  jupyter_notebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../jupyter_notebooks/jupyter_notebooks.html">
+   What is an .ipynb File?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_postprocess
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_postprocess/index.html">
+   MOM5 output postprocessing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  mom5_prepare
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mom5_prepare/00_download_code_and_compile.html">
+   Downloading MOM code and compiling
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_gaugedata
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/obsdata_gaugedata.html">
+   Processing tide gauge observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/convert_emodnet_validator/convert_emodnet_validator.html">
+   Convert EmodNet tide gauge data to validator format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_gaugedata/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  obsdata_hydrography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/obsdata_hydrography.html">
+   Processing hydrographic observational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../obsdata_hydrography/find_stations/find_stations.html">
+   Finding stations with most data / longest time coverage
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  plots_and_maps
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../plots_and_maps.html">
+   Plots and maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basic_plotting/basic_plotting.html">
+   Basic plotting
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Map with country borders
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  stat_timeseries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/stat_timeseries.html">
+   Time series analyses
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/regression_maps/regression.html">
+   AMO example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../stat_timeseries/seasonal_observation_bias/seasonal_observation_bias.html">
+   Removing seasonal observation bias from an irregular time series
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/notebook_collection/plots_and_maps/map_with_countries/map_with_countries.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/florianboergel/book_notebook_collection"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/florianboergel/book_notebook_collection/issues/new?title=Issue%20on%20page%20%2Fnotebook_collection/plots_and_maps/map_with_countries/map_with_countries.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/book_notebook_collection/master?urlpath=tree/notebook_collection/plots_and_maps/map_with_countries/map_with_countries.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-installing-packages">
+   Step 1: Installing packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-get-baltic-sea-bathymetry-from-noaa-database">
+   Step 2: Get Baltic Sea Bathymetry from NOAA database
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-define-a-function-that-creates-a-plot">
+   Step 3: Define a function that creates a plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-call-the-function-to-do-the-plot">
+   Step 4: Call the function to do the plot
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Map with country borders</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-installing-packages">
+   Step 1: Installing packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-get-baltic-sea-bathymetry-from-noaa-database">
+   Step 2: Get Baltic Sea Bathymetry from NOAA database
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-define-a-function-that-creates-a-plot">
+   Step 3: Define a function that creates a plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-call-the-function-to-do-the-plot">
+   Step 4: Call the function to do the plot
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="map-with-country-borders">
+<h1>Map with country borders<a class="headerlink" href="#map-with-country-borders" title="Permalink to this headline">¶</a></h1>
+<p><em>Hagen Radtke, 2020-06-29</em></p>
+<div class="section" id="step-1-installing-packages">
+<h2>Step 1: Installing packages<a class="headerlink" href="#step-1-installing-packages" title="Permalink to this headline">¶</a></h2>
+<p>This requires the packages “marmap” and . We will install them first. Make sure you choose “R” as kernel, not “R basic”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;marmap&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;mapdata&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggmap&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into &#39;/silos/conda_packages/radtke/miniconda3_4.8.2/OS_42.3/r_packages&#39;
+(as &#39;lib&#39; is unspecified)
+Installing package into &#39;/silos/conda_packages/radtke/miniconda3_4.8.2/OS_42.3/r_packages&#39;
+(as &#39;lib&#39; is unspecified)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">install</span><span class="o">.</span><span class="n">package</span><span class="p">(</span><span class="s2">&quot;ggmap&quot;</span><span class="p">):</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">find</span> <span class="n">function</span> <span class="s2">&quot;install.package&quot;</span>
+<span class="ne">Traceback</span>:
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-get-baltic-sea-bathymetry-from-noaa-database">
+<h2>Step 2: Get Baltic Sea Bathymetry from NOAA database<a class="headerlink" href="#step-2-get-baltic-sea-bathymetry-from-noaa-database" title="Permalink to this headline">¶</a></h2>
+<p>We will first write a function that downloads the bathymetry and then call this function so we will get a Baltic Sea bathymetry</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## function to collect and store bathymetry data: library(&quot;marmap&quot;)</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;/silos/notebook_collection/plots_and_maps/map_with_countries/&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;marmap&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+
+<span class="c1"># define a function to download bathymetry data</span>
+<span class="n">get.bathymetry</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">lon1</span><span class="o">=</span><span class="m">4</span><span class="p">,</span> <span class="n">lon2</span><span class="o">=</span><span class="m">30</span><span class="p">,</span> <span class="n">lat1</span><span class="o">=</span><span class="m">53</span><span class="p">,</span> <span class="n">lat2</span><span class="o">=</span><span class="m">67</span><span class="p">,</span> <span class="n">bathy.breaks</span> <span class="o">=</span> <span class="m">8</span><span class="p">){</span>
+  <span class="n">bathymetry</span> <span class="o">&lt;-</span> <span class="nf">getNOAA.bathy</span><span class="p">(</span><span class="n">lon1</span><span class="o">=</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lon2</span><span class="o">=</span><span class="n">lon2</span><span class="p">,</span> <span class="n">lat1</span><span class="o">=</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lat2</span><span class="o">=</span><span class="n">lat2</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span> <span class="c1"># keep = TRUE saves downloaded data as csv-File</span>
+  
+  <span class="n">fortyfied.bathy</span> <span class="o">&lt;-</span> <span class="nf">fortify</span><span class="p">(</span><span class="n">bathymetry</span><span class="p">)</span> <span class="c1"># make a df out of bathy so ggplot can fully use the data</span>
+  <span class="n">fortyfied.bathy</span> <span class="o">&lt;-</span> <span class="nf">subset</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="p">,</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="m">0</span><span class="p">)</span> <span class="c1"># limit to values below sea surface</span>
+  <span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">z</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">z</span> <span class="c1"># make depths positive values</span>
+  
+  <span class="nf">names</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Longitude&quot;</span><span class="p">,</span> <span class="s">&quot;Latitude&quot;</span><span class="p">,</span> <span class="s">&quot;Depth_m&quot;</span><span class="p">)</span>
+  <span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span> <span class="o">&lt;-</span> <span class="nf">cut</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depth_m</span><span class="p">,</span> <span class="n">breaks</span> <span class="o">=</span> <span class="n">bathy.breaks</span><span class="p">,</span> <span class="n">dig.lab</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span> <span class="c1"># generate depth intervals for contour plot</span>
+  <span class="c1">## &#39;cut()&#39; returns intervals in unpleasant format. Thus, cumbersome renaming for nice legend:</span>
+  
+  <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="s">&quot; - &quot;</span><span class="p">,</span> <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">))</span>
+  <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;\\(&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">))</span>
+  <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;\\]&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">))</span>
+  <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">sub</span><span class="p">(</span><span class="s">&quot;(.*) - Inf&quot;</span><span class="p">,</span> <span class="s">&quot;&amp;gt;\\1&quot;</span><span class="p">,</span> <span class="nf">levels</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="o">$</span><span class="n">Depthsteps_m</span><span class="p">))</span>
+  
+  <span class="nf">return</span><span class="p">(</span><span class="n">fortyfied.bathy</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">baltic.bathy</span> <span class="o">&lt;-</span> <span class="nf">get.bathymetry</span><span class="p">(</span><span class="n">lon1</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span>
+                                  <span class="n">lat1</span> <span class="o">=</span> <span class="m">53</span><span class="p">,</span> <span class="n">lat2</span> <span class="o">=</span> <span class="m">67</span><span class="p">,</span>
+                                  <span class="n">bathy.breaks</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="n">length.out</span> <span class="o">=</span> <span class="m">6</span><span class="p">),</span>
+                                                   <span class="nf">seq</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">300</span><span class="p">,</span> <span class="n">length.out</span> <span class="o">=</span> <span class="m">3</span><span class="p">),</span>
+                                                   <span class="o">+</span><span class="kc">Inf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registered S3 methods overwritten by &#39;adehabitatMA&#39;:
+  method                       from
+  print.SpatialPixelsDataFrame sp  
+  print.SpatialPixels          sp  
+Registered S3 methods overwritten by &#39;ggplot2&#39;:
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+
+Attaching package: &#39;marmap&#39;
+
+The following object is masked from &#39;package:grDevices&#39;:
+
+    as.raster
+
+Querying NOAA database ...
+This may take seconds to minutes, depending on grid size
+Building bathy matrix ...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us see how baltic.bathy looks like</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">baltic.bathy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>Longitude</th><th scope=col>Latitude</th><th scope=col>Depth_m</th><th scope=col>Depthsteps_m</th></tr></thead>
+<tbody>
+	<tr><td>4.000000   </td><td>67         </td><td>1351       </td><td>&amp;gt;300</td></tr>
+	<tr><td>4.016677   </td><td>67         </td><td>1349       </td><td>&amp;gt;300</td></tr>
+	<tr><td>4.033355   </td><td>67         </td><td>1348       </td><td>&amp;gt;300</td></tr>
+	<tr><td>4.050032   </td><td>67         </td><td>1348       </td><td>&amp;gt;300</td></tr>
+	<tr><td>4.066709   </td><td>67         </td><td>1349       </td><td>&amp;gt;300</td></tr>
+	<tr><td>4.083387   </td><td>67         </td><td>1350       </td><td>&amp;gt;300</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="step-3-define-a-function-that-creates-a-plot">
+<h2>Step 3: Define a function that creates a plot<a class="headerlink" href="#step-3-define-a-function-that-creates-a-plot" title="Permalink to this headline">¶</a></h2>
+<p>We will first download the coastlines, and then define a function tht draws a map with bathymetry and coastlines</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># load some libraries</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;mapdata&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;ggmap&quot;</span><span class="p">)</span>
+
+<span class="c1"># get a map of the world countries&#39; coastlines, but in the Baltic Sea area</span>
+<span class="n">baltic.coastlines</span> <span class="o">&lt;-</span> <span class="nf">map_data</span><span class="p">(</span><span class="s">&#39;worldHires&#39;</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">29</span><span class="p">),</span> <span class="n">ylim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span> <span class="m">66</span><span class="p">))</span>
+
+<span class="c1"># define a function that creates a plot</span>
+<span class="n">land.colour</span> <span class="o">&lt;-</span> <span class="s">&quot;grey75&quot;</span>
+<span class="n">border.colour</span> <span class="o">&lt;-</span> <span class="s">&quot;grey10&quot;</span>
+<span class="n">plot.map</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">bathy</span> <span class="o">=</span> <span class="n">baltic.bathy</span><span class="p">,</span> <span class="n">basemap</span> <span class="o">=</span> <span class="n">baltic.coastlines</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">53.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">66</span><span class="p">){</span>
+  <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">coord_quickmap</span><span class="p">(</span><span class="c1">#projection= &quot;azequalarea&quot;,</span>
+      <span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_tile</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">bathy</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Latitude</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">Depthsteps_m</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span> <span class="o">=</span> <span class="s">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Water depth [m]&quot;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">basemap</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="n">land.colour</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">border.colour</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="n">.</span><span class="m">5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_minimal</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: maps
+Google&#39;s Terms of Service: https://cloud.google.com/maps-platform/terms/.
+Please cite ggmap if you use it! See citation(&quot;ggmap&quot;) for details.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-call-the-function-to-do-the-plot">
+<h2>Step 4: Call the function to do the plot<a class="headerlink" href="#step-4-call-the-function-to-do-the-plot" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.map</span><span class="p">(</span><span class="n">bathy</span> <span class="o">=</span> <span class="n">baltic.bathy</span><span class="p">,</span> <span class="n">basemap</span> <span class="o">=</span> <span class="n">baltic.coastlines</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">53.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">66</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/map_with_countries_10_0.png" src="../../../_images/map_with_countries_10_0.png" />
+</div>
+</div>
+<p>We can also save it in a png file like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># always use a high resolution, e.g. 600 dpi, if you want to use the image for a publication</span>
+<span class="nf">png</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;image.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="m">4000</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="m">3000</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="m">600</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">&quot;px&quot;</span><span class="p">)</span> 
+<span class="nf">plot.map</span><span class="p">(</span><span class="n">bathy</span> <span class="o">=</span> <span class="n">baltic.bathy</span><span class="p">,</span> <span class="n">basemap</span> <span class="o">=</span> <span class="n">baltic.coastlines</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="m">53.5</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="m">66</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>png:</strong> 2</div></div>
+</div>
+<p>Now double-click <code class="docutils literal notranslate"><span class="pre">image.png</span></code> on the left to see the image.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "iow_r"
+        },
+        kernelOptions: {
+            kernelName: "iow_r",
+            path: "./notebook_collection/plots_and_maps/map_with_countries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'iow_r'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../basic_plotting/basic_plotting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Basic plotting</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Untitled%20Folder%201/Untitled.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Hagen Radtke and Florian Boergel<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
