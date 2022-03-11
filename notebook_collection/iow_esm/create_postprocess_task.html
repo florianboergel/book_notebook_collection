@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="What is an .ipynb File?" href="../jupyter_notebooks/jupyter_notebooks.html" />
-    <link rel="prev" title="Default processing of raw output" href="automatic_postprocessing.html" />
+    <link rel="prev" title="Automatic postprocessing" href="automatic_postprocessing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -189,7 +189,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="automatic_postprocessing.html">
-   Default processing of raw output
+   Automatic postprocessing
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -425,12 +425,12 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Create a new postprocess task
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#folder-and-postprocess-sh">
+   Folder and postprocess.sh
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dependencies-optional-but-useful">
    Dependencies (optional but useful)
   </a>
@@ -455,12 +455,12 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Create a new postprocess task
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#folder-and-postprocess-sh">
+   Folder and postprocess.sh
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dependencies-optional-but-useful">
    Dependencies (optional but useful)
   </a>
@@ -476,6 +476,8 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="create-a-new-postprocess-task">
 <h1>Create a new postprocess task<a class="headerlink" href="#create-a-new-postprocess-task" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="folder-and-postprocess-sh">
+<h2>Folder and <a class="reference external" href="http://postprocess.sh">postprocess.sh</a><a class="headerlink" href="#folder-and-postprocess-sh" title="Permalink to this headline">¶</a></h2>
 <p>Go to the folder <code class="docutils literal notranslate"><span class="pre">postprocess</span></code> in your root directory and subsequently to the directory of the model you want to create a task for.
 Here you have to create a folder with the name of the task, e.g. <code class="docutils literal notranslate"><span class="pre">new_task</span></code> (no spaces).
 In this new folder you have to create a script called <code class="docutils literal notranslate"><span class="pre">postprocess.sh</span></code> taking the following arguments</p>
@@ -492,8 +494,8 @@ In this new folder you have to create a script called <code class="docutils lite
 It can call bash or python scripts etc.
 There are some auxiliary modules provided in the <a class="reference external" href="https://git.io-warnemuende.de/iow_esm/postprocess/src/branch/master/auxiliary">auxiliary</a> folder of the <a class="reference external" href="https://git.io-warnemuende.de/iow_esm/postprocess">postprocess</a> repository. You might use them.</p>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="dependencies-optional-but-useful">
-<h1>Dependencies (optional but useful)<a class="headerlink" href="#dependencies-optional-but-useful" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies-optional-but-useful">
+<h2>Dependencies (optional but useful)<a class="headerlink" href="#dependencies-optional-but-useful" title="Permalink to this headline">¶</a></h2>
 <p>In order to keep an overview of the dependencies among the postprocess tasks it is useful to create a file <code class="docutils literal notranslate"><span class="pre">config.py</span></code> that contains list variable <code class="docutils literal notranslate"><span class="pre">dependencies</span></code>, e.g</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;process_raw_output&quot;</span><span class="p">]</span>
 </pre></div>
@@ -501,6 +503,7 @@ There are some auxiliary modules provided in the <a class="reference external" h
 <p>Entries in the list are the names of tasks that your new task <em>directly</em> depdends on.
 These dependencies are used by the GUI to list your tasks such that you can execute them in the correct order.</p>
 <p>You can also use this <code class="docutils literal notranslate"><span class="pre">config.py</span></code> file for configuring your task if it is a python script.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -532,7 +535,7 @@ These dependencies are used by the GUI to list your tasks such that you can exec
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Default processing of raw output</p>
+            <p class="prev-next-title">Automatic postprocessing</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../jupyter_notebooks/jupyter_notebooks.html" title="next page">

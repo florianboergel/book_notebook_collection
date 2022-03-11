@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Default processing of raw output &#8212; IOW Notebook Collection</title>
+    <title>Automatic postprocessing &#8212; IOW Notebook Collection</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -189,7 +189,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Default processing of raw output
+   Automatic postprocessing
   </a>
  </li>
  <li class="toctree-l1">
@@ -425,17 +425,17 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#default-processing-of-raw-output">
    Default processing of raw output
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-specific-tasks-automatically">
    Perform specific tasks automatically
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-specific-tasks-with-specific-arguments-automatically">
    Perform specific tasks with specific arguments automatically
   </a>
@@ -450,7 +450,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Default processing of raw output</h1>
+                <h1>Automatic postprocessing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -460,17 +460,17 @@
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#default-processing-of-raw-output">
    Default processing of raw output
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-specific-tasks-automatically">
    Perform specific tasks automatically
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-specific-tasks-with-specific-arguments-automatically">
    Perform specific tasks with specific arguments automatically
   </a>
@@ -484,8 +484,10 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="default-processing-of-raw-output">
-<h1>Default processing of raw output<a class="headerlink" href="#default-processing-of-raw-output" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="automatic-postprocessing">
+<h1>Automatic postprocessing<a class="headerlink" href="#automatic-postprocessing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="default-processing-of-raw-output">
+<h2>Default processing of raw output<a class="headerlink" href="#default-processing-of-raw-output" title="Permalink to this headline">¶</a></h2>
 <p>If all of your models provide a postprocess task called <code class="docutils literal notranslate"><span class="pre">process_raw_output</span></code> and these tasks should be performed after a run has successfully finished you can add to <code class="docutils literal notranslate"><span class="pre">input/global_settings.py</span></code> the following lines</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1">################################################</span>
@@ -506,8 +508,8 @@
 <li><p>current-end-date = the end date of the <em>current</em> run</p></li>
 </ul>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="perform-specific-tasks-automatically">
-<h1>Perform specific tasks automatically<a class="headerlink" href="#perform-specific-tasks-automatically" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="perform-specific-tasks-automatically">
+<h2>Perform specific tasks automatically<a class="headerlink" href="#perform-specific-tasks-automatically" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1">################################################</span>
 <span class="c1"># STEP 8 (optional): Start postprocessing after run has finished #</span>
@@ -522,8 +524,8 @@
 </div>
 <p>Note that the tasks are preformed in the order they appear in the lists given in the dictionary.</p>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="perform-specific-tasks-with-specific-arguments-automatically">
-<h1>Perform specific tasks with specific arguments automatically<a class="headerlink" href="#perform-specific-tasks-with-specific-arguments-automatically" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="perform-specific-tasks-with-specific-arguments-automatically">
+<h2>Perform specific tasks with specific arguments automatically<a class="headerlink" href="#perform-specific-tasks-with-specific-arguments-automatically" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1">################################################</span>
 <span class="c1"># STEP 8 (optional): Start postprocessing after run has finished #</span>
@@ -547,6 +549,7 @@
 <li><p>“init_date” = start date of <em>the current</em> run</p></li>
 <li><p>“end_date” = end date of <em>the current</em> run</p></li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
